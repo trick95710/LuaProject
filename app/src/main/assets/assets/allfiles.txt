@@ -1,0 +1,14 @@
+picture/big-2.png
+picture/big-1.png
+picture/small-1.png
+picture/small-2.png
+picture/biggest-1.png
+picture/biggest-2.png
+sound/YouTube- If I Had a Chicken.mp3
+sound/YouTube- Sunny Side Up by Alumo.mp3
+sound/YouTube- Upbeat Ukulele.mp3
+sound/YouTube- Whistling Down the Road.mp3
+font/kaiu.ttf*
+font/tahoma.ttf*
+font/ukai.ttc*
+main.lua*

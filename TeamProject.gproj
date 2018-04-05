@@ -1,0 +1,89 @@
+<project>
+ <properties win_org="GiderosMobile" html5_pack="0" logicalHeight="480" touchToMouse="1" winrt_org="GiderosMobile" exportMode="0" architecture="0" mouseToTouch="1" windowHeight="0" logicalWidth="320" tv_icon="" backgroundColor="#ffffff" version="1.0" splash_h_image="" vsync="0" build_number="1" mouseTouchOrder="0" app_name="" app_icon="" splashScaleMode="0" version_code="1" html5_fbload="100" retinaDisplay="0" fps="60" android_template="0" win_domain="giderosmobile.com" scaleMode="0" osx_domain="giderosmobile.com" html5_fbinstant="0" osx_signingId="" packageName="com.yourdomain.yourapp" osx_installerId="" autorotation="0" osx_category="5" orientation="0" iosDevice="0" ios_bundle="com.yourdomain." encryptCode="0" windowWidth="0" encryptAssets="0" splash_v_image="" osx_org="GiderosMobile" html5_mem="256" disableSplash="0" osx_bundle="com.yourdomain." winrt_package="com.yourdomain.yourapp" html5_host="">
+  <imageScales/>
+  <plugins>
+   <plugin name="Lua Socket" enabled="1"/>
+  </plugins>
+  <exports>
+   <export name="APK">
+    <property name="androidPath" value=""/>
+    <property name="androidSdk" value=""/>
+    <property name="androidTarget" value="19"/>
+    <property name="androidTools" value=""/>
+    <property name="buildApk" value="1"/>
+    <property name="deployApk" value="1"/>
+    <property name="javaPath" value=""/>
+    <property name="keyAlias" value="king"/>
+    <property name="keyStore" value="C:/table/KeyStore.jks"/>
+    <property name="packageName" value="com.yourdomain.yourapp"/>
+   </export>
+  </exports>
+ </properties>
+ <folder name="font">
+  <file source="font/setofont.ttf"/>
+  <file source="font/ukai.ttc"/>
+  <file source="font/tahoma.ttf"/>
+  <file source="font/kaiu.ttf"/>
+ </folder>
+ <folder name="sound">
+  <file source="sound/YouTube- Whistling Down the Road.mp3"/>
+  <file source="sound/YouTube- Upbeat Ukulele.mp3"/>
+  <file source="sound/YouTube- Sunny Side Up by Alumo.mp3"/>
+  <file source="sound/YouTube- If I Had a Chicken.mp3"/>
+ </folder>
+ <folder name="picture">
+  <file source="picture/marker.png"/>
+  <file source="picture/bar.png"/>
+  <file source="picture/Button_Up.png"/>
+  <file source="picture/Button_Down.png"/>
+  <file source="picture/crate.png"/>
+  <file source="picture/right-up.png"/>
+  <file source="picture/right-down.png"/>
+  <file source="picture/left-up.png"/>
+  <file source="picture/left-down.png"/>
+  <file source="picture/baffle.png"/>
+  <file source="picture/RoundBox.png"/>
+  <file source="picture/IpconnectPicture.png"/>
+  <file source="picture/startpicture.jpg"/>
+  <file source="picture/Redboard.png"/>
+  <file source="picture/Grayboard.png"/>
+  <file source="picture/whitebox.png"/>
+  <file source="picture/Emeraldbox.png"/>
+  <file source="picture/redbox.png"/>
+  <file source="picture/purplebox.png"/>
+  <file source="picture/pinkbox.png"/>
+  <file source="picture/greenbox.png"/>
+  <file source="picture/bluebox.png"/>
+  <file source="picture/bg5.jpg"/>
+  <file source="picture/bg4.jpg"/>
+  <file source="picture/bg3.png"/>
+  <file source="picture/spritesheet.png"/>
+  <file source="picture/ball.png"/>
+ </folder>
+ <file source="main.lua"/>
+ <file source="start.lua"/>
+ <file source="Rules.lua"/>
+ <file source="options.lua"/>
+ <file source="Ipconnect.lua"/>
+ <file source="select.lua"/>
+ <file source="P1_GAMESTART.lua"/>
+ <file source="P2_GAMESTART.lua"/>
+ <file source="GameEnd.lua"/>
+ <file source="BaffleBox.lua"/>
+ <file source="ControlSound.lua"/>
+ <file source="Boundary.lua"/>
+ <file source="BackStart.lua"/>
+ <file source="AddFunction.lua"/>
+ <file source="AddStage.lua"/>
+ <file source="Ace.Slide.lua"/>
+ <file source="gtween.lua"/>
+ <file source="View.lua"/>
+ <file source="easing.lua"/>
+ <file source="Config.lua"/>
+ <file source="Settings.lua"/>
+ <file source="Sounds.lua"/>
+ <file source="Music.lua"/>
+ <file source="socket.lua"/>
+ <file source="button.lua"/>
+ <file source="scenemanager.lua"/>
+</project>
