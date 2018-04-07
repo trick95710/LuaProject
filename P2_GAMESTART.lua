@@ -148,6 +148,7 @@ function P2_GAMESTART:init()
 			if Round == "P2" then
 				if ReduceDelay then
 					self:score()
+					
 					ReduceDelay = false 
 				end
 				Timer.delayedCall(400, function()
@@ -238,6 +239,11 @@ function P2_GAMESTART:init()
 				if GetArray then
 					if reNew5 then
 						GetHitBall = GetArray:split()
+						
+						for i = 1,#GetHitBall do
+							print(GetHitBall[i])
+						end
+						
 						GetP1Random:stop()
 						reNew5 = false
 					else

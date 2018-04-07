@@ -256,6 +256,11 @@ function P1_GAMESTART:init()
 				if GetArray then
 					if reNew5 then
 						GetHitBall = GetArray:split()
+						
+						for i = 1,#GetHitBall do
+							print(GetHitBall[i])
+						end
+						
 						GetP2Random:stop()
 						reNew5 = false
 					else

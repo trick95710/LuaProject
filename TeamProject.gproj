@@ -1,21 +1,21 @@
 <project>
- <properties build_number="1" fps="60" html5_pack="0" architecture="0" html5_host="" html5_mem="256" tv_icon="" osx_signingId="" version_code="1" windowWidth="0" ios_bundle="com.yourdomain." osx_bundle="com.yourdomain." osx_installerId="" app_icon="" logicalHeight="480" splash_v_image="" win_org="GiderosMobile" android_template="0" win_domain="giderosmobile.com" exportMode="0" disableSplash="0" iosDevice="0" vsync="0" autorotation="0" encryptCode="0" splash_h_image="" touchToMouse="1" backgroundColor="#ffffff" logicalWidth="320" mouseTouchOrder="0" version="1.0" app_name="" packageName="com.yourdomain.yourapp" osx_org="GiderosMobile" splashScaleMode="0" osx_category="5" orientation="0" mouseToTouch="1" winrt_package="com.yourdomain.yourapp" html5_fbinstant="0" retinaDisplay="0" scaleMode="0" winrt_org="GiderosMobile" html5_fbload="100" windowHeight="0" osx_domain="giderosmobile.com" encryptAssets="0">
+ <properties mouseTouchOrder="0" html5_pack="0" encryptAssets="0" html5_fbload="100" orientation="0" osx_installerId="" fps="60" backgroundColor="#ffffff" disableSplash="0" splash_v_image="" html5_host="" touchToMouse="1" splashScaleMode="0" winrt_org="GiderosMobile" architecture="0" mouseToTouch="1" osx_domain="giderosmobile.com" osx_org="GiderosMobile" logicalWidth="320" autorotation="0" packageName="com.yourdomain.yourapp" osx_category="5" html5_fbinstant="0" win_org="GiderosMobile" windowWidth="0" html5_mem="256" scaleMode="0" tv_icon="" splash_h_image="" winrt_package="com.yourdomain.yourapp" iosDevice="0" app_icon="" android_template="0" version="1.0" win_domain="giderosmobile.com" osx_signingId="" logicalHeight="480" exportMode="0" osx_bundle="com.yourdomain." app_name="" vsync="0" retinaDisplay="0" encryptCode="0" windowHeight="0" ios_bundle="com.yourdomain." build_number="1" version_code="1">
   <imageScales/>
   <plugins>
    <plugin enabled="1" name="Lua Socket"/>
   </plugins>
   <exports>
    <export name="APK">
-    <property name="androidPath" value=""/>
-    <property name="androidSdk" value=""/>
-    <property name="androidTarget" value="19"/>
-    <property name="androidTools" value=""/>
-    <property name="buildApk" value="1"/>
-    <property name="deployApk" value="1"/>
-    <property name="javaPath" value=""/>
-    <property name="keyAlias" value="king"/>
-    <property name="keyStore" value="C:/table/KeyStore.jks"/>
-    <property name="packageName" value="com.yourdomain.yourapp"/>
+    <property value="" name="androidPath"/>
+    <property value="" name="androidSdk"/>
+    <property value="19" name="androidTarget"/>
+    <property value="" name="androidTools"/>
+    <property value="1" name="buildApk"/>
+    <property value="1" name="deployApk"/>
+    <property value="" name="javaPath"/>
+    <property value="king" name="keyAlias"/>
+    <property value="C:/table/KeyStore.jks" name="keyStore"/>
+    <property value="com.yourdomain.yourapp" name="packageName"/>
    </export>
   </exports>
  </properties>
