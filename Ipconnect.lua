@@ -64,6 +64,12 @@ function Ipconnect:init()
 	theUdp4:setsockname(getMyIP(),6001)
 	theUdp4:settimeout(0)
 	
+	---主程式---
+	--建立UDP5 socket 並bind到 5001 port 
+	theUdp5 = socket.udp()
+	theUdp5:setsockname(getMyIP(),5001)
+	theUdp5:settimeout(0)
+	
 	--建立計時器Timer
 	local IpTimer = Timer.new(10)
 	--call on each timer tick (每100ms發作一次)

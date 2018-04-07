@@ -6,7 +6,7 @@ center_height = application:getContentHeight()/2
 
 -- set font
 scorefont = TTFont.new("font/SentyChalk.ttf", 20, true)
--- set debug
+-- set debug 
 debugRound = true
 
 -- set reRound = "P1" then
@@ -16,7 +16,7 @@ debugRound = true
 Round = "P1"
 
 -- CountRound
-CountRound = 5
+CountRound = 4
 -- GameEndRound
 GameEndRound = 16
 

@@ -36,6 +36,12 @@ function P2_GAMESTART:init()
 		end
 	end
 	
+	function PostRandomArray()
+		if theUdp5 then
+			theUdp4:sendto(getarray.."/"..hitRound,sendToIP,5001)
+		end
+	end
+	
 -- Set variable------------------------
 -- set draw == 1 start to draw band_l && band_r
 -- draw == 0 will stop  to draw
@@ -53,7 +59,7 @@ function P2_GAMESTART:init()
 	-- random result
 	shuffle(result)
 	getarray = ""
-	for i = 1 , #result do
+	for i = 1 , #result-1 do
 		if i == 1 then
 			getarray = result[i]
 		else
@@ -109,6 +115,7 @@ function P2_GAMESTART:init()
 	setballposition_P2:start()
 	
 	local ReduceDelay = false
+	ReduceDelay_2 = false
 	
 	setRound_P2 = Timer.new(10)
 	setRound_P2:addEventListener(Event.TIMER, function()
@@ -127,10 +134,16 @@ function P2_GAMESTART:init()
 					end		
 			end
 			if Round == "P1" then
-					postballposition_P2:stop()
-					Get_score_P1_Timer:start()
-					setballposition_P2:start()
-					ReduceDelay = true
+				if ReduceDelay_2 and debugRound == false then
+					
+					self:setRoundRules()
+					
+					ReduceDelay_2 = false
+				end
+				postballposition_P2:stop()
+				Get_score_P1_Timer:start()
+				setballposition_P2:start()
+				ReduceDelay = true
 			end
 			if Round == "P2" then
 				if ReduceDelay then
@@ -143,7 +156,7 @@ function P2_GAMESTART:init()
 					postballposition_P2:start()
 					
 				end)
-			
+				ReduceDelay_2 = true	
 			end
 		until not getRound
 	end)
@@ -215,6 +228,26 @@ function P2_GAMESTART:init()
 		until not GetP1Score
 	end)
 	
+	GetP1Random = Timer.new(10)
+	GetP1Random:addEventListener(Event.TIMER, function()
+		repeat 
+			if theUdp5 then
+				local ip5 , port5
+				local reNew5 = true
+				GetArray, ip, port = theUdp:receivefrom()
+				if GetArray then
+					if reNew5 then
+						GetHitBall = GetArray:split()
+						GetP1Random:stop()
+						reNew5 = false
+					else
+						
+					end
+				end
+			end
+		until not GetArray
+	end)
+	GetP1Random:start()
 ----------------------------------------------------------------------
 
 ------- set world---------------------------------------------------------
@@ -260,6 +293,8 @@ function P2_GAMESTART:init()
 		self:addChildAt(self.band_r, 3)	
 	end
 	function P2_resetBall()
+		
+		PostRandomArray()	
 		
 		-- show score
 		self:resetScore()
@@ -307,7 +342,7 @@ function P2_GAMESTART:init()
 		-------------------------
 		
 		CountRound = CountRound + 1
-		self:setRound()
+		self:setRoundRules()
 		print("P2_GAMESTART CountRound: " .. CountRound)
 	end
 ----------- 畫面佈局：
@@ -565,7 +600,7 @@ function P2_box2d(decidebox)
 		--
 	end
 end
-function P2_GAMESTART:setRound()
+function P2_GAMESTART:setRoundRules()
 	if CountRound < GameEndRound then
 		self:removeChild(RoundBoxText)
 		
@@ -619,7 +654,11 @@ function P2_GAMESTART:JudgeHitBall()
 		end
 	}
 	
-	local judge_ball = HitBall_switch[JudgeHitBox[CountRound-5]]
+	if debugRound == true or Round == "P2" then
+		judge_ball = HitBall_switch[JudgeHitBox[CountRound-5]]
+	elseif not(debugRound) and Round =="P1" then
+		judge_ball = HitBall_switch[GetHitBall[CountRound-5]]
+	end
 	
 	if(judge_ball) then
 		judge_ball()
@@ -646,6 +685,29 @@ function P2_GAMESTART:SixRound()
 		HitBallPicture:setScale(.35,.35)
 		HitBallPicture:setPosition(screen_height/2-40,75)
 		self:addChild(HitBallPicture)
+	else
+		if Round == "P1" and ReduceDelay_2 then
+			if CountRound ~= 6 then
+				self:removeChild(HitBallPicture)
+			end
+			self:JudgeHitBall()
+			
+			HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)
+			HitBallPicture:setAnchorPoint(.5,.5)
+			HitBallPicture:setScale(.35,.35)
+			HitBallPicture:setPosition(screen_height/2-40,75)
+			self:addChild(HitBallPicture)
+		elseif Round == "P2" then
+			self:removeChild(HitBallPicture)
+			
+			self:JudgeHitBall()
+			
+			HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)
+			HitBallPicture:setAnchorPoint(.5,.5)
+			HitBallPicture:setScale(.35,.35)
+			HitBallPicture:setPosition(screen_height/2-40,75)
+			self:addChild(HitBallPicture)
+		end
 	end
 end
 
