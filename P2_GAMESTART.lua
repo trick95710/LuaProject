@@ -44,7 +44,38 @@ function P2_GAMESTART:init()
 	CountGround = 1
 	-- set Boxes Score
 	BoxScore = 0
+	-- set random  seed
+	math.randomseed(os.time())
+	-- set RulesBox
+	local result = {"blue" , "purple" , "red" , "green" , "pink" , "white"}
+	-- set RulesRound
+	local hitRound = ""
+	-- random result
+	shuffle(result)
+	getarray = ""
+	for i = 1 , #result do
+		if i == 1 then
+			getarray = result[i]
+		else
+			getarray = getarray .."/".. result[i]
+		end
+	end
+	print(getarray)
+	JudgeHitBox = getarray:split()
+	print(JudgeHitBox[5])
+	-- random hitRound
+	for i = 1 , 10 do
+		randomNum = math.random(50)
+		randomNum = randomNum % 3 + 1
+		if i == 1 then
+			hitRound = randomNum
+		else
+			hitRound = hitRound .. "/" .. randomNum
+		end
+	end
+	print(hitRound)
 	
+----------------------------------------
 ----------- SendballPosition timer
 	postballposition_P2 = Timer.new(10)
 	postballposition_P2:addEventListener(Event.TIMER, function()
@@ -289,7 +320,8 @@ function P2_GAMESTART:init()
 	RoundBox:setScale(.1,.1)
 	
 	RoundBoxText = TextField.new(scorefont, CountRound)
-	RoundBoxText:setPosition(218,40)
+	RoundBoxText:setAnchorPoint(.5,.5)
+	RoundBoxText:setPosition(220,46)
 	self:addChild(RoundBoxText)
 	
 	
@@ -506,22 +538,22 @@ function P2_box2d(decidebox)
 	-- Blue > Purple > red > green > pink > white
 	local box2d_switch = {
 		["bluebox"] = function()
-			BoxScore = 30
+			BoxScore = blueboxScore
 		end,
 		["purplebox"] = function()
-			BoxScore = 50
+			BoxScore = purpleboxScore
 		end,
 		["redbox"] = function()
-			BoxScore = 20
+			BoxScore = redboxScore
 		end,
 		["greenbox"] = function()
-			BoxScore = 5
+			BoxScore = greenboxScore
 		end,
 		["pinkbox"] = function()
-			BoxScore = 8
+			BoxScore = pinkboxScore
 		end,
 		["whitebox"] = function()
-			BoxScore = 10
+			BoxScore = whiteboxScore
 		end
 	}
 	
@@ -538,7 +570,9 @@ function P2_GAMESTART:setRound()
 		self:removeChild(RoundBoxText)
 		
 		RoundBoxText = TextField.new(scorefont, CountRound)
-		RoundBoxText:setPosition(218,40)
+		
+		RoundBoxText:setAnchorPoint(.5,.5)
+		RoundBoxText:setPosition(220,46)
 		self:addChild(RoundBoxText)
 	end
 	if CountRound == GameEndRound then
@@ -546,6 +580,7 @@ function P2_GAMESTART:setRound()
 	elseif CountRound >= 11 then
 		
 	elseif CountRound >= 6 then
+		self:SixRound()
 		if setBox then
 		-- World is locked have delayTime
 			Timer.delayedCall(.5, function()
@@ -556,6 +591,64 @@ function P2_GAMESTART:setRound()
 		end
 	end
 end
+function P2_GAMESTART:JudgeHitBall()
+	local HitBall_switch = {
+		["blue"] = function()
+			HitBallImg = "picture/JudgeBall/blue.png"
+			blueboxScore = -blueboxScore
+		end,
+		["purple"] = function()
+			HitBallImg = "picture/JudgeBall/purple.png"
+			purpleboxScore = -purpleboxScore
+		end,
+		["red"] = function()
+			HitBallImg = "picture/JudgeBall/red.png"
+			redboxScore = -redboxScore
+		end,
+		["green"] = function()
+			HitBallImg = "picture/JudgeBall/green.png"
+			greenboxScore = -greenboxScore
+		end,
+		["pink"] = function()
+			HitBallImg = "picture/JudgeBall/pink.png"
+			pinkboxScore = -pinkboxScore
+		end,
+		["white"] = function()
+			HitBallImg = "picture/JudgeBall/white.png"
+			whiteboxScore = -whiteboxScore
+		end
+	}
+	
+	local judge_ball = HitBall_switch[JudgeHitBox[CountRound-5]]
+	
+	if(judge_ball) then
+		judge_ball()
+	else
+		--
+	end
+end
+function P2_GAMESTART:SixRound()
+	blueboxScore = neblueboxScore
+	purpleboxScore = nepurpleboxScore
+	redboxScore = neredboxScore
+	greenboxScore = negreenboxScore
+	pinkboxScore = nepinkboxScore
+	whiteboxScore = newhiteboxScore
+	
+	if debugRound then
+		if CountRound ~= 6 then
+			self:removeChild(HitBallPicture)
+		end
+		self:JudgeHitBall()
+		
+		HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)
+		HitBallPicture:setAnchorPoint(.5,.5)
+		HitBallPicture:setScale(.35,.35)
+		HitBallPicture:setPosition(screen_height/2-40,75)
+		self:addChild(HitBallPicture)
+	end
+end
+
 function P2_GAMESTART:resetScore()
 	-- reset Score
 	self:removeChild(show_score_P2)

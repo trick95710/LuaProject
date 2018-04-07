@@ -1,7 +1,7 @@
 require "Config"
-AddStage = Core.class(Sprite)
+Boxes = Core.class(Sprite)
 
-function AddStage:init(Player)
+function Boxes:init(Player)
 	local BlueBox = Bitmap.new(Texture.new("picture/bluebox.png"))
 	BlueBox:setScale(.2,.1924)
 	BlueBox:setAnchorPoint(.5,.5)

@@ -6,7 +6,6 @@ center_height = application:getContentHeight()/2
 
 -- set font
 scorefont = TTFont.new("font/SentyChalk.ttf", 20, true)
-
 -- set debug
 debugRound = true
 
@@ -23,6 +22,24 @@ GameEndRound = 16
 
 -- debugDraw show
 debugDraw = true
+
+-- BoxScore
+blueboxScore = 30
+purpleboxScore = 50
+redboxScore = 20
+greenboxScore = 5
+pinkboxScore = 8 
+whiteboxScore = 10
+-----------
+-- negative scorefont
+neblueboxScore = -blueboxScore
+nepurpleboxScore = -purpleboxScore
+neredboxScore = -redboxScore
+negreenboxScore = -greenboxScore
+nepinkboxScore = -pinkboxScore 
+newhiteboxScore = -whiteboxScore
+
+---------------------
 
 -- set reRound = 6 then setBox
 setBox = true

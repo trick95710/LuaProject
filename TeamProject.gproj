@@ -34,6 +34,15 @@
   <file source="sound/YouTube- If I Had a Chicken.mp3"/>
  </folder>
  <folder name="picture">
+  <folder name="JudgeBall">
+   <file source="picture/JudgeBall/white.png"/>
+   <file source="picture/JudgeBall/red.png"/>
+   <file source="picture/JudgeBall/purple.png"/>
+   <file source="picture/JudgeBall/pink.png"/>
+   <file source="picture/JudgeBall/green.png"/>
+   <file source="picture/JudgeBall/Emerald.png"/>
+   <file source="picture/JudgeBall/blue.png"/>
+  </folder>
   <file source="picture/marker.png"/>
   <file source="picture/bar.png"/>
   <file source="picture/Button_Up.png"/>
@@ -75,8 +84,8 @@
  <file source="ControlSound.lua"/>
  <file source="Boundary.lua"/>
  <file source="BackStart.lua"/>
+ <file source="Boxes.lua"/>
  <file source="AddFunction.lua"/>
- <file source="AddStage.lua"/>
  <file source="Ace.Slide.lua"/>
  <file source="gtween.lua"/>
  <file source="View.lua"/>
