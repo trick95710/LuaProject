@@ -20,13 +20,13 @@ function P2_GAMESTART:init()
 	
 	function Post_Round_P2()
 		if theUdp2 then
-			theUdp2:sendto("1",sendToIP,8001)
+			theUdp2:sendto("P1",sendToIP,8001)
 		end
 	end
 	
 	function Post_draw_start_P2()
 		if theUdp3 then
-			theUdp3:sendto("0",sendToIP,7001)
+			theUdp3:sendto("DrawStop",sendToIP,7001)
 		end
 	end
 	-- Post Score at 6001
@@ -39,13 +39,11 @@ function P2_GAMESTART:init()
 -- Set variable------------------------
 -- set draw == 1 start to draw band_l && band_r
 -- draw == 0 will stop  to draw
-	drawNum = 1
+	drawNum = "DrawStart"
 	-- Count touch ground
 	CountGround = 1
 	-- set Boxes Score
 	BoxScore = 0
-	-- CountRound
-	CountRound = 1
 	
 ----------- SendballPosition timer
 	postballposition_P2 = Timer.new(10)
@@ -79,7 +77,7 @@ function P2_GAMESTART:init()
 	end)
 	setballposition_P2:start()
 	
-	local ReduceDelay = 0
+	local ReduceDelay = false
 	
 	setRound_P2 = Timer.new(10)
 	setRound_P2:addEventListener(Event.TIMER, function()
@@ -90,24 +88,23 @@ function P2_GAMESTART:init()
 					getRound , ip2 , port2 = theUdp2:receivefrom()
 					if getRound then
 						if reNew2 then
-							reRound = tonumber(getRound)						
-							print(reRound)
+							Round = getRound			
 							reNew2 = false
 						else
 							
 						end
 					end		
 			end
-			if reRound == 1 then
+			if Round == "P1" then
 					postballposition_P2:stop()
 					Get_score_P1_Timer:start()
 					setballposition_P2:start()
-					ReduceDelay = 1
+					ReduceDelay = true
 			end
-			if reRound == 0 then
-				if ReduceDelay == 1 then
+			if Round == "P2" then
+				if ReduceDelay then
 					self:score()
-					ReduceDelay = 0 
+					ReduceDelay = false 
 				end
 				Timer.delayedCall(400, function()
 					Get_score_P1_Timer:stop()
@@ -130,7 +127,7 @@ function P2_GAMESTART:init()
 					getdraw , ip3 , port3 = theUdp3:receivefrom()
 					if getdraw then
 						if reNew3 then
-							drawNum = tonumber(getdraw)
+							drawNum = getdraw
 							self.band_l:clear()
 							self.band_r:clear()
 						else
@@ -139,9 +136,10 @@ function P2_GAMESTART:init()
 					end
 			end
 		until not getdraw
-		
-		if drawNum == 1 then
-			P2_draw()
+		if debugRound == false then
+			if drawNum == "DrawStart" then
+				P2_draw()
+			end
 		end
 	end)
 	drawtimer:start()
@@ -266,10 +264,10 @@ function P2_GAMESTART:init()
 		
 		Timer.delayedCall(200, function()
 			-- set P1 Round
-			reRound =1
+			Round ="P1"
 			-- turn Round
 			self:score()
-			drawNum = 1
+			drawNum = "DrawStart"
 		end)
 		
 		-- reset variable--------
@@ -278,16 +276,7 @@ function P2_GAMESTART:init()
 		-------------------------
 		
 		CountRound = CountRound + 1
-		
-		self:removeChild(RoundBoxText)
-		
-		RoundBoxText = TextField.new(scorefont, CountRound)
-		RoundBoxText:setPosition(218,43)
-		self:addChild(RoundBoxText)
-		
-		if CountRound == 6 then
-			sceneManager:changeScene("GameEnd", 1, SceneManager.fade, easing.linear)
-		end
+		self:setRound()
 		print("P2_GAMESTART CountRound: " .. CountRound)
 	end
 ----------- 畫面佈局：
@@ -300,7 +289,7 @@ function P2_GAMESTART:init()
 	RoundBox:setScale(.1,.1)
 	
 	RoundBoxText = TextField.new(scorefont, CountRound)
-	RoundBoxText:setPosition(218,43)
+	RoundBoxText:setPosition(218,40)
 	self:addChild(RoundBoxText)
 	
 	
@@ -443,10 +432,8 @@ function P2_onBeginContact(event)
 end
 
 function onMouseDown(self , event)
-	print(reRound)
-	
-	if reRound == 0 then
-		
+	print(Round)
+	if Round == "P2" or debugRound then
 		local bird = ball2
 		if bird:hitTestPoint(event.x, event.y) and bird.isFly ~= true then
 			bird.isFocus = true
@@ -546,6 +533,29 @@ function P2_box2d(decidebox)
 		--
 	end
 end
+function P2_GAMESTART:setRound()
+	if CountRound < GameEndRound then
+		self:removeChild(RoundBoxText)
+		
+		RoundBoxText = TextField.new(scorefont, CountRound)
+		RoundBoxText:setPosition(218,40)
+		self:addChild(RoundBoxText)
+	end
+	if CountRound == GameEndRound then
+		sceneManager:changeScene("GameEnd", 1, SceneManager.fade, easing.linear)
+	elseif CountRound >= 11 then
+		
+	elseif CountRound >= 6 then
+		if setBox then
+		-- World is locked have delayTime
+			Timer.delayedCall(.5, function()
+				firstBaffle = BaffleBox.new(self,200,200,"box",.5,1)
+				firstBaffle2 = BaffleBox.new(self,250,200,"box2",.5,1)
+				setBox = false
+			end)
+		end
+	end
+end
 function P2_GAMESTART:resetScore()
 	-- reset Score
 	self:removeChild(show_score_P2)
@@ -571,14 +581,14 @@ end
 
 function P2_GAMESTART:score()
 	local switch = {
-		[0] = function()    -- for case 0
+		["P2"] = function()    -- for case 0
 			RoundText = "我方的回合"
 			Redboard:setPosition(250,-55)
 			Grayboard:setPosition(18,-55)
 			self:addChildAt(Redboard,2)
 			self:addChildAt(Grayboard,2)
 		end,
-		[1] = function()    -- for case 1
+		["P1"] = function()    -- for case 1
 			RoundText = "對方的回合"
 			Redboard:setPosition(18,-55)
 			Grayboard:setPosition(250,-55)
@@ -586,7 +596,7 @@ function P2_GAMESTART:score()
 			self:addChildAt(Grayboard,2)
 		end			
 	}
-	local Record = reRound
+	local Record = Round
 	local decide = switch[Record]
 	if(decide) then
 		self:removeChild(Redboard)

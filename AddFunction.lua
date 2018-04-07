@@ -26,3 +26,4 @@ function string:split(delimiter)
 	table.insert(result, self:sub(from))
 	return result
 end
+

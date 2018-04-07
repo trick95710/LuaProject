@@ -1,8 +1,8 @@
 <project>
- <properties win_org="GiderosMobile" html5_pack="0" logicalHeight="480" touchToMouse="1" winrt_org="GiderosMobile" exportMode="0" architecture="0" mouseToTouch="1" windowHeight="0" logicalWidth="320" tv_icon="" backgroundColor="#ffffff" version="1.0" splash_h_image="" vsync="0" build_number="1" mouseTouchOrder="0" app_name="" app_icon="" splashScaleMode="0" version_code="1" html5_fbload="100" retinaDisplay="0" fps="60" android_template="0" win_domain="giderosmobile.com" scaleMode="0" osx_domain="giderosmobile.com" html5_fbinstant="0" osx_signingId="" packageName="com.yourdomain.yourapp" osx_installerId="" autorotation="0" osx_category="5" orientation="0" iosDevice="0" ios_bundle="com.yourdomain." encryptCode="0" windowWidth="0" encryptAssets="0" splash_v_image="" osx_org="GiderosMobile" html5_mem="256" disableSplash="0" osx_bundle="com.yourdomain." winrt_package="com.yourdomain.yourapp" html5_host="">
+ <properties build_number="1" fps="60" html5_pack="0" architecture="0" html5_host="" html5_mem="256" tv_icon="" osx_signingId="" version_code="1" windowWidth="0" ios_bundle="com.yourdomain." osx_bundle="com.yourdomain." osx_installerId="" app_icon="" logicalHeight="480" splash_v_image="" win_org="GiderosMobile" android_template="0" win_domain="giderosmobile.com" exportMode="0" disableSplash="0" iosDevice="0" vsync="0" autorotation="0" encryptCode="0" splash_h_image="" touchToMouse="1" backgroundColor="#ffffff" logicalWidth="320" mouseTouchOrder="0" version="1.0" app_name="" packageName="com.yourdomain.yourapp" osx_org="GiderosMobile" splashScaleMode="0" osx_category="5" orientation="0" mouseToTouch="1" winrt_package="com.yourdomain.yourapp" html5_fbinstant="0" retinaDisplay="0" scaleMode="0" winrt_org="GiderosMobile" html5_fbload="100" windowHeight="0" osx_domain="giderosmobile.com" encryptAssets="0">
   <imageScales/>
   <plugins>
-   <plugin name="Lua Socket" enabled="1"/>
+   <plugin enabled="1" name="Lua Socket"/>
   </plugins>
   <exports>
    <export name="APK">
@@ -20,6 +20,8 @@
   </exports>
  </properties>
  <folder name="font">
+  <file source="font/SentyTang.ttf"/>
+  <file source="font/SentyChalk.ttf"/>
   <file source="font/setofont.ttf"/>
   <file source="font/ukai.ttc"/>
   <file source="font/tahoma.ttf"/>
