@@ -14,7 +14,6 @@ function Ipconnect:init()
 	
 	sendToIP = "xxx.xxx.xxx.xxx"
 	
-	local Btn_Ready = "NotReady"
 	
 	--取得本身IP
 	local function getMyIP()

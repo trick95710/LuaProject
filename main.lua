@@ -14,6 +14,7 @@ music = Sound.new("sound/YouTube- Whistling Down the Road.mp3")
 channel = music:play(0,true)
 channel:setVolume(0)
 
+Btn_Ready = "NotReady"
 
 sceneManager = SceneManager.new({
 	--start scene
@@ -37,4 +38,4 @@ sceneManager = SceneManager.new({
 stage:addChild(sceneManager)
 
 --start start scene
-sceneManager:changeScene("P1_GAMESTART", 1, SceneManager.fade, easing.linear)
+sceneManager:changeScene("start", 1, SceneManager.fade, easing.linear)
