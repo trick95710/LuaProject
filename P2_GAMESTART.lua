@@ -36,11 +36,7 @@ function P2_GAMESTART:init()
 		end
 	end
 	
-	function PostRandomArray()
-		if theUdp5 then
-			theUdp4:sendto(getarray.."/"..hitRound,sendToIP,5001)
-		end
-	end
+	
 	
 -- Set variable------------------------
 -- set draw == 1 start to draw band_l && band_r
@@ -81,6 +77,11 @@ function P2_GAMESTART:init()
 	end
 	print(hitRound)
 	
+	function PostRandomArray()
+		if theUdp5 then
+			theUdp5:sendto(getarray.."/"..hitRound,sendToIP,5001)
+		end
+	end
 ----------------------------------------
 ----------- SendballPosition timer
 	postballposition_P2 = Timer.new(10)
@@ -235,9 +236,10 @@ function P2_GAMESTART:init()
 			if theUdp5 then
 				local ip5 , port5
 				local reNew5 = true
-				GetArray, ip, port = theUdp:receivefrom()
+				GetArray, ip5, port5 = theUdp5:receivefrom()
 				if GetArray then
 					if reNew5 then
+						print(GetArray)
 						GetHitBall = GetArray:split()
 						
 						for i = 1,#GetHitBall do
@@ -348,7 +350,8 @@ function P2_GAMESTART:init()
 		-------------------------
 		
 		CountRound = CountRound + 1
-		self:setRoundRules()
+		
+		
 		print("P2_GAMESTART CountRound: " .. CountRound)
 	end
 ----------- 畫面佈局：
@@ -607,6 +610,7 @@ function P2_box2d(decidebox)
 	end
 end
 function P2_GAMESTART:setRoundRules()
+
 	if CountRound < GameEndRound then
 		self:removeChild(RoundBoxText)
 		
@@ -616,6 +620,7 @@ function P2_GAMESTART:setRoundRules()
 		RoundBoxText:setPosition(220,46)
 		self:addChild(RoundBoxText)
 	end
+	
 	if CountRound == GameEndRound then
 		sceneManager:changeScene("GameEnd", 1, SceneManager.fade, easing.linear)
 	elseif CountRound >= 11 then
@@ -688,31 +693,38 @@ function P2_GAMESTART:SixRound()
 		
 		HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)
 		HitBallPicture:setAnchorPoint(.5,.5)
-		HitBallPicture:setScale(.35,.35)
+		HitBallPicture:setScale(.2,.2)
 		HitBallPicture:setPosition(screen_height/2-40,75)
 		self:addChild(HitBallPicture)
 	else
+		
 		if Round == "P1" and ReduceDelay_2 then
 			if CountRound ~= 6 then
 				self:removeChild(HitBallPicture)
 			end
+			
 			self:JudgeHitBall()
+			
+			print(HitBallImg)
 			
 			HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)
 			HitBallPicture:setAnchorPoint(.5,.5)
-			HitBallPicture:setScale(.35,.35)
+			HitBallPicture:setScale(.2,.2)
 			HitBallPicture:setPosition(screen_height/2-40,75)
 			self:addChild(HitBallPicture)
+			
 		elseif Round == "P2" then
+			
 			self:removeChild(HitBallPicture)
 			
 			self:JudgeHitBall()
 			
 			HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)
 			HitBallPicture:setAnchorPoint(.5,.5)
-			HitBallPicture:setScale(.35,.35)
+			HitBallPicture:setScale(.2,.2)
 			HitBallPicture:setPosition(screen_height/2-40,75)
 			self:addChild(HitBallPicture)
+			
 		end
 	end
 end

@@ -36,12 +36,6 @@ function P1_GAMESTART:init()
 			theUdp4:sendto(score_P1,sendToIP,6001)
 		end
 	end
-	
-	function PostRandomArray()
-		if theUdp5 then
-			theUdp4:sendto(getarray.."/"..hitRound,sendToIP,5001)
-		end
-	end
 -- Set variable----------------------	--
 	-- set draw == 1 start to draw band_l && band_r
 	-- draw == 0 will stop  to draw
@@ -79,6 +73,12 @@ function P1_GAMESTART:init()
 		end
 	end
 	print(hitRound)
+	
+	function PostRandomArray()
+		if theUdp5 then
+			theUdp5:sendto(getarray.."/"..hitRound,sendToIP,5001)
+		end
+	end
 	
 	print(getarray.."/"..hitRound)
 	
@@ -252,7 +252,7 @@ function P1_GAMESTART:init()
 			if theUdp5 then
 				local ip5 , port5
 				local reNew5 = true
-				GetArray, ip, port = theUdp:receivefrom()
+				GetArray, ip5, port5 = theUdp5:receivefrom()
 				if GetArray then
 					if reNew5 then
 						GetHitBall = GetArray:split()
@@ -636,7 +636,7 @@ function box2d(decidebox)
 	end
 end
 function P1_GAMESTART:setRoundRules()
-	if CountRound < GameEndRound then
+	if CountRound < GameEndRound and Round == "P1" then
 		self:removeChild(RoundBoxText)
 		
 		RoundBoxText = TextField.new(scorefont, CountRound)
@@ -717,7 +717,7 @@ function P1_GAMESTART:SixRound()
 		
 		HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)
 		HitBallPicture:setAnchorPoint(.5,.5)
-		HitBallPicture:setScale(.35,.35)
+		HitBallPicture:setScale(.2,.2)
 		HitBallPicture:setPosition(screen_height/2-40,75)
 		self:addChild(HitBallPicture)
 	else
@@ -729,7 +729,7 @@ function P1_GAMESTART:SixRound()
 			
 			HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)
 			HitBallPicture:setAnchorPoint(.5,.5)
-			HitBallPicture:setScale(.35,.35)
+			HitBallPicture:setScale(.2,.2)
 			HitBallPicture:setPosition(screen_height/2-40,75)
 			self:addChild(HitBallPicture)
 		elseif Round == "P2" and ReduceDelay_2 and CountRound ~= 6 then
@@ -739,7 +739,7 @@ function P1_GAMESTART:SixRound()
 			
 			HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)
 			HitBallPicture:setAnchorPoint(.5,.5)
-			HitBallPicture:setScale(.35,.35)
+			HitBallPicture:setScale(.2,.2)
 			HitBallPicture:setPosition(screen_height/2-40,75)
 			self:addChild(HitBallPicture)
 		end

@@ -37,4 +37,4 @@ sceneManager = SceneManager.new({
 stage:addChild(sceneManager)
 
 --start start scene
-sceneManager:changeScene("P2_GAMESTART", 1, SceneManager.fade, easing.linear)
+sceneManager:changeScene("P1_GAMESTART", 1, SceneManager.fade, easing.linear)
