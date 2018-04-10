@@ -1,8 +1,8 @@
 <project>
- <properties windowWidth="0" mouseToTouch="1" touchToMouse="1" orientation="0" html5_fbload="100" winrt_package="com.yourdomain.yourapp" html5_host="" winrt_org="GiderosMobile" html5_pack="0" build_number="1" osx_installerId="" osx_signingId="" osx_bundle="com.yourdomain." osx_category="5" splash_v_image="" mouseTouchOrder="0" encryptAssets="0" architecture="0" fps="60" packageName="com.yourdomain.yourapp" retinaDisplay="0" encryptCode="0" osx_domain="giderosmobile.com" tv_icon="" android_template="0" version="1.0" splashScaleMode="0" ios_bundle="com.yourdomain." windowHeight="0" disableSplash="0" app_name="" logicalHeight="480" logicalWidth="320" vsync="0" iosDevice="0" app_icon="" exportMode="0" backgroundColor="#ffffff" win_domain="giderosmobile.com" autorotation="0" html5_mem="256" scaleMode="0" version_code="1" html5_fbinstant="0" win_org="GiderosMobile" splash_h_image="" osx_org="GiderosMobile">
+ <properties winrt_package="com.yourdomain.yourapp" osx_signingId="" packageName="com.yourdomain.yourapp" logicalHeight="480" version_code="1" version="1.0" windowWidth="0" osx_installerId="" splash_v_image="" win_org="GiderosMobile" retinaDisplay="0" disableSplash="0" splash_h_image="" splashScaleMode="0" osx_domain="giderosmobile.com" touchToMouse="1" architecture="0" windowHeight="0" mouseTouchOrder="0" backgroundColor="#ffffff" build_number="1" winrt_org="GiderosMobile" ios_bundle="com.yourdomain." orientation="0" html5_fbload="100" html5_fbinstant="0" logicalWidth="320" html5_mem="256" osx_category="5" osx_org="GiderosMobile" app_icon="" vsync="0" autorotation="0" encryptCode="0" app_name="" encryptAssets="0" exportMode="0" tv_icon="" html5_host="" scaleMode="0" iosDevice="0" html5_pack="0" fps="60" osx_bundle="com.yourdomain." android_template="0" win_domain="giderosmobile.com" mouseToTouch="1">
   <imageScales/>
   <plugins>
-   <plugin name="Lua Socket" enabled="1"/>
+   <plugin enabled="1" name="Lua Socket"/>
   </plugins>
   <exports>
    <export name="APK">
@@ -23,7 +23,6 @@
   <file source="font/Barrelhouse All Caps.ttf"/>
   <file source="font/Freakshow.ttf"/>
   <file source="font/MISTV___.TTF"/>
-  <file source="font/¥©­·ÅéW1.ttc"/>
   <file source="font/SentyTang.ttf"/>
   <file source="font/SentyChalk.ttf"/>
   <file source="font/setofont.ttf"/>
@@ -39,6 +38,8 @@
  </folder>
  <folder name="picture">
   <folder name="Rules">
+   <file source="picture/Rules/right-up.png"/>
+   <file source="picture/Rules/right-down.png"/>
    <file source="picture/Rules/RulePicture.jpg"/>
   </folder>
   <folder name="JudgeBall">
@@ -57,8 +58,6 @@
   <file source="picture/Button_Up.png"/>
   <file source="picture/Button_Down.png"/>
   <file source="picture/crate.png"/>
-  <file source="picture/right-up.png"/>
-  <file source="picture/right-down.png"/>
   <file source="picture/left-up.png"/>
   <file source="picture/left-down.png"/>
   <file source="picture/baffle.png"/>

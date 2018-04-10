@@ -33,29 +33,30 @@ function Rules:init()
 	AceSlide.show()
 
 
-	local imgButton_Up = "picture/left-up.png"
-	local imgButton_Down = "picture/left-down.png"
+	local imgButton_Up = "picture/Rules/right-up.png"
+	local imgButton_Down = "picture/Rules/right-down.png"
 	
-
+	local imgScaleX = .2
+	local imgScaleY = .2
 	--create buttons to switch content
-	local leftButton = Button.new(imgButton_Up, imgButton_Down, "")
-	leftButton:setPosition(70,130+58)
-	leftButton:setAnchorPoint(.5,.5)
-	self:addChild(leftButton)
-	leftButton:addEventListener("click", 
-		function()	
-			AceSlide.prevItem()
-		end
-	)
-
 	local rightButton = Button.new(imgButton_Up, imgButton_Down, "")
-	rightButton:setPosition(480-70,130)
-	rightButton:setAnchorPoint(.5,.5)
-	rightButton:setRotation(180)
+	rightButton:setPosition(480-70,160)
+	rightButton:setScale(imgScaleX,imgScaleY)
 	self:addChild(rightButton)
 	rightButton:addEventListener("click", 
 		function()	
 			AceSlide.nextItem()
+		end
+	)
+
+	local leftButton = Button.new(imgButton_Up, imgButton_Down, "")
+	leftButton:setPosition(70,160)
+	leftButton:setScale(imgScaleX,imgScaleY)
+	leftButton:setRotation(180)
+	self:addChild(leftButton)
+	leftButton:addEventListener("click", 
+		function()	
+			AceSlide.prevItem()
 		end
 	)
 	
