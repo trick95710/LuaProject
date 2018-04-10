@@ -83,6 +83,8 @@ function P1_GAMESTART:init()
 		end
 	end
 	
+	firstRemove = true
+	
 	function PostRandomArray()
 		if theUdp5 then
 			theUdp5:sendto(getarray.."/"..hitRound.."/"..setYbox,sendToIP,5001)
@@ -131,7 +133,6 @@ function P1_GAMESTART:init()
 	--setballposition:start()
 	
 	local ReduceDelay = false
-	ReduceDelay_2 = false
 	
 	setRound = Timer.new(10)
 	setRound:addEventListener(Event.TIMER, function()
@@ -152,12 +153,6 @@ function P1_GAMESTART:init()
 			-- Round == "P2" for P2 
 			-- P1 will stop post Ball and start get Ball
 			if Round == "P2" then
-				if ReduceDelay_2 and debugRound == false then
-					if CountRound ~= 6 then
-						self:setRoundRules()
-					end
-					ReduceDelay_2 = false
-				end
 				postballposition:stop()
 				Get_score_P2_Timer:start()
 				setballposition:start()
@@ -182,8 +177,7 @@ function P1_GAMESTART:init()
 					Get_score_P2_Timer:stop()
 					setballposition:stop()
 					postballposition:start()
-				end)
-				ReduceDelay_2 = true		
+				end)		
 			end
 		until not getRound
 	end)
@@ -259,32 +253,6 @@ function P1_GAMESTART:init()
 			end
 		until not GetP2Score
 	end)
-	
-	
-	GetP2Random = Timer.new(10)
-	GetP2Random:addEventListener(Event.TIMER, function()
-		repeat 
-			if theUdp5 then
-				local ip5 , port5
-				local reNew5 = true
-				GetArray, ip5, port5 = theUdp5:receivefrom()
-				if GetArray then
-					if reNew5 then
-						GetHitBall = GetArray:split()
-						
-						for i = 1,#GetHitBall do
-							print(GetHitBall[i])
-						end
-						
-						GetP2Random:stop()
-						reNew5 = false
-					else
-						
-					end
-				end
-			end
-		until not GetArray
-	end)
 
 -------------------------------------------------------------------------
 
@@ -330,13 +298,9 @@ function P1_GAMESTART:init()
 		self.band_r:endPath()
 		self:addChildAt(self.band_r, 3)
 	end
-	OnceTime = true
+	
 	function resetBall()
-		if OnceTime then
-			GetP2Random:start()
-			OnceTime = false
-		end
-		
+
 		PostRandomArray()
 		-- show score
 		self:resetScore()
@@ -662,8 +626,9 @@ function P1_GAMESTART:setRoundRules()
 	if CountRound == GameEndRound then
 		sceneManager:changeScene("GameEnd", 1, SceneManager.fade, easing.linear)
 	elseif CountRound >= 11 then
-		if CountRound == 11 then
+		if CountRound == 11 and firstRemove then
 			self:removeChild(HitBallPicture)
+			firstRemove = false
 		end
 		
 		blueboxScore = math.abs(blueboxScore)
@@ -672,23 +637,23 @@ function P1_GAMESTART:setRoundRules()
 		greenboxScore = math.abs(greenboxScore)
 		pinkboxScore = math.abs(pinkboxScore)
 		whiteboxScore = math.abs(whiteboxScore)
-		
-		if CountRound == 11 then
-			Baffle = BaffleBox.new(self,280,RandomSet[3],"box3",.2,.5)
+		if Round == "P1" then
+			if CountRound == 11 then
+				Baffle = BaffleBox.new(self,280,RandomSet[3],"box3",.2,.5)
+			end
+			if CountRound == 12 then
+				Baffle = BaffleBox.new(self,300,RandomSet[4],"box4",.2,.5)
+			end
+			if CountRound == 13 then
+				Baffle = BaffleBox.new(self,320,RandomSet[5],"box5",.2,.5)
+			end
+			if CountRound == 14 then
+				Baffle = BaffleBox.new(self,330,RandomSet[6],"box6",.2,.5)
+			end
+			if CountRound == 15 then
+				Baffle = BaffleBox.new(self,350,RandomSet[7],"box7",.2,.5)
+			end
 		end
-		if CountRound == 12 then
-			Baffle = BaffleBox.new(self,300,RandomSet[4],"box4",.2,.5)
-		end
-		if CountRound == 13 then
-			Baffle = BaffleBox.new(self,320,RandomSet[5],"box5",.2,.5)
-		end
-		if CountRound == 14 then
-			Baffle = BaffleBox.new(self,330,RandomSet[6],"box6",.2,.5)
-		end
-		if CountRound == 15 then
-			Baffle = BaffleBox.new(self,350,RandomSet[7],"box7",.2,.5)
-		end
-		
 	elseif CountRound >= 6 then
 		print("in")
 		self:SixRound()
@@ -730,11 +695,9 @@ function P1_GAMESTART:JudgeHitBall()
 		end
 	}
 	print(Round)
-	if debugRound == true or Round == "P1" then
-		judge_ball = HitBall_switch[JudgeHitBox[CountRound-5]]
-	elseif not(debugRound) and Round =="P2" then
-		judge_ball = HitBall_switch[GetHitBall[CountRound-5]]
-	end
+	
+	local judge_ball = HitBall_switch[JudgeHitBox[CountRound-5]]
+	
 	
 	if(judge_ball) then
 		judge_ball()
@@ -766,16 +729,6 @@ function P1_GAMESTART:SixRound()
 			if CountRound ~= 6 then
 				self:removeChild(HitBallPicture)
 			end
-			self:JudgeHitBall()
-			
-			HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)
-			HitBallPicture:setAnchorPoint(.5,.5)
-			HitBallPicture:setScale(.2,.2)
-			HitBallPicture:setPosition(screen_height/2-40,75)
-			self:addChild(HitBallPicture)
-		elseif Round == "P2" and ReduceDelay_2 and CountRound ~= 6 then
-			self:removeChild(HitBallPicture)
-			
 			self:JudgeHitBall()
 			
 			HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)

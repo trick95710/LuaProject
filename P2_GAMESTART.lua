@@ -350,6 +350,10 @@ function P2_GAMESTART:init()
 		
 		CountRound = CountRound + 1
 		
+		if CountRound == 11 then
+			self:removeChild(HitBallPicture)
+		end
+		
 		if debugRound then
 			self:setRoundRules()
 		end
@@ -625,6 +629,12 @@ function P2_GAMESTART:setRoundRules()
 	if CountRound == GameEndRound then
 		sceneManager:changeScene("GameEnd", 1, SceneManager.fade, easing.linear)
 	elseif CountRound >= 11 then
+		blueboxScore = math.abs(blueboxScore)
+		purpleboxScore = math.abs(purpleboxScore)
+		redboxScore = math.abs(redboxScore)
+		greenboxScore = math.abs(greenboxScore)
+		pinkboxScore = math.abs(pinkboxScore)
+		whiteboxScore = math.abs(pinkboxScore)
 		Timer.delayedCall(.5, function()
 			if debugRound then
 				if CountRound == 11 then
@@ -644,19 +654,19 @@ function P2_GAMESTART:setRoundRules()
 				end
 			else
 				if CountRound == 11 then
-					Baffle = BaffleBox.new(self,280,RandomSet[3],"box3",.2,.5)
+					Baffle = BaffleBox.new(self,280,GetHitBall[13],"box3",.2,.5)
 				end
 				if CountRound == 12 then
-					Baffle = BaffleBox.new(self,300,RandomSet[4],"box4",.2,.5)
+					Baffle = BaffleBox.new(self,300,GetHitBall[14],"box4",.2,.5)
 				end
 				if CountRound == 13 then
-					Baffle = BaffleBox.new(self,320,RandomSet[5],"box5",.2,.5)
+					Baffle = BaffleBox.new(self,320,GetHitBall[15],"box5",.2,.5)
 				end
 				if CountRound == 14 then
-					Baffle = BaffleBox.new(self,330,RandomSet[6],"box6",.2,.5)
+					Baffle = BaffleBox.new(self,330,GetHitBall[16],"box6",.2,.5)
 				end
 				if CountRound == 15 then
-					Baffle = BaffleBox.new(self,350,RandomSet[7],"box7",.2,.5)
+					Baffle = BaffleBox.new(self,350,GetHitBall[17],"box7",.2,.5)
 				end
 			end
 		end)
@@ -669,7 +679,7 @@ function P2_GAMESTART:setRoundRules()
 					Baffle = BaffleBox.new(self,220,200,"box",.5,1)
 					Baffle = BaffleBox.new(self,380,250,"box2",.5,1)
 				else
-					Baffle = BaffleBox.new(self,220,GetHitBall[11],"box",.5,1)
+					Baffle = BaffleBox.new(self,220,GetHitBall[11]+50,"box",.5,1)
 					Baffle = BaffleBox.new(self,380,GetHitBall[12],"box2",.5,1)
 				end
 				setBox = false
@@ -705,11 +715,10 @@ function P2_GAMESTART:JudgeHitBall()
 		end
 	}
 	
-	if debugRound == true or Round == "P2" then
-		judge_ball = HitBall_switch[JudgeHitBox[CountRound-5]]
-	elseif not(debugRound) and Round =="P1" then
-		judge_ball = HitBall_switch[GetHitBall[CountRound-5]]
-	end
+	
+
+	local judge_ball = HitBall_switch[GetHitBall[CountRound-5]]
+
 	
 	if(judge_ball) then
 		judge_ball()
@@ -738,7 +747,7 @@ function P2_GAMESTART:SixRound()
 		self:addChild(HitBallPicture)
 	else
 		
-		if Round == "P1" and ReduceDelay_2 then
+		if Round == "P1" then
 			if CountRound ~= 6 then
 				self:removeChild(HitBallPicture)
 			end
@@ -746,18 +755,6 @@ function P2_GAMESTART:SixRound()
 			self:JudgeHitBall()
 			
 			print(HitBallImg)
-			
-			HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)
-			HitBallPicture:setAnchorPoint(.5,.5)
-			HitBallPicture:setScale(.2,.2)
-			HitBallPicture:setPosition(screen_height/2-40,75)
-			self:addChild(HitBallPicture)
-			
-		elseif Round == "P2" then
-			
-			self:removeChild(HitBallPicture)
-			
-			self:JudgeHitBall()
 			
 			HitBallPicture = Bitmap.new(Texture.new(HitBallImg),true)
 			HitBallPicture:setAnchorPoint(.5,.5)

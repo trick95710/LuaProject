@@ -1,5 +1,5 @@
 <project>
- <properties osx_org="GiderosMobile" tv_icon="" scaleMode="0" encryptCode="0" splash_h_image="" architecture="0" exportMode="0" disableSplash="0" ios_bundle="com.yourdomain." html5_host="" fps="60" mouseTouchOrder="0" splash_v_image="" osx_bundle="com.yourdomain." backgroundColor="#ffffff" splashScaleMode="0" windowHeight="0" packageName="com.yourdomain.yourapp" app_icon="" version_code="1" touchToMouse="1" win_domain="giderosmobile.com" windowWidth="0" html5_mem="256" mouseToTouch="1" logicalWidth="320" osx_signingId="" vsync="0" osx_installerId="" autorotation="0" version="1.0" winrt_package="com.yourdomain.yourapp" app_name="" retinaDisplay="0" html5_fbinstant="0" android_template="0" encryptAssets="0" winrt_org="GiderosMobile" logicalHeight="480" orientation="0" html5_fbload="100" build_number="1" osx_category="5" iosDevice="0" win_org="GiderosMobile" html5_pack="0" osx_domain="giderosmobile.com">
+ <properties scaleMode="0" logicalWidth="320" osx_category="5" orientation="0" tv_icon="" osx_org="GiderosMobile" html5_fbinstant="0" html5_pack="0" encryptAssets="0" build_number="1" vsync="0" osx_bundle="com.yourdomain." mouseTouchOrder="0" exportMode="0" autorotation="0" version_code="1" splash_v_image="" win_domain="giderosmobile.com" osx_signingId="" html5_fbload="100" architecture="0" windowHeight="0" packageName="com.yourdomain.yourapp" osx_installerId="" app_icon="" winrt_package="com.yourdomain.yourapp" windowWidth="0" html5_host="" version="1.0" osx_domain="giderosmobile.com" disableSplash="0" app_name="" html5_mem="256" fps="60" splash_h_image="" android_template="0" splashScaleMode="0" touchToMouse="1" retinaDisplay="0" backgroundColor="#ffffff" mouseToTouch="1" encryptCode="0" iosDevice="0" logicalHeight="480" ios_bundle="com.yourdomain." win_org="GiderosMobile" winrt_org="GiderosMobile">
   <imageScales/>
   <plugins>
    <plugin enabled="1" name="Lua Socket"/>
@@ -20,6 +20,7 @@
   </exports>
  </properties>
  <folder name="font">
+  <file source="font/W1.ttc"/>
   <file source="font/Barrelhouse All Caps.ttf"/>
   <file source="font/Freakshow.ttf"/>
   <file source="font/MISTV___.TTF"/>

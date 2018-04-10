@@ -3,7 +3,7 @@ GameEnd = gideros.class(Sprite)
 
 function GameEnd:init()
 	
-	GameEndfont = TTFont.new("font/巧風體W1.ttc", 60, true)
+	GameEndfont = TTFont.new("font/W1.ttc", 60, true)
 	
 	local TextColor = 0xcdceb9
 	
