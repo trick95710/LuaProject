@@ -3,9 +3,10 @@ require "box2d"
 require "AddFunction"
 P1_GAMESTART = Core.class(Sprite)
 
-User = "P1"
+
 
 function P1_GAMESTART:init()
+	User = "P1"
 ----------- UDP
 	socket = require("socket")
 ----------- Send
@@ -60,7 +61,7 @@ function P1_GAMESTART:init()
 			getarray = getarray .."/".. result[i]
 		end
 	end
-	print(getarray)
+	
 	JudgeHitBox = getarray:split()
 	-- random hitRound
 	for i = 1 , 5 do
@@ -72,15 +73,28 @@ function P1_GAMESTART:init()
 			hitRound = hitRound .. "/" .. randomNum
 		end
 	end
-	print(hitRound)
 	
-	function PostRandomArray()
-		if theUdp5 then
-			theUdp5:sendto(getarray.."/"..hitRound,sendToIP,5001)
+	for i = 1 ,7 do
+		boxrandom = math.random(0+45,320-45)
+		if i == 1 then
+			setYbox = boxrandom
+		else
+			setYbox = setYbox .. "/" .. boxrandom
 		end
 	end
 	
-	print(getarray.."/"..hitRound)
+	function PostRandomArray()
+		if theUdp5 then
+			theUdp5:sendto(getarray.."/"..hitRound.."/"..setYbox,sendToIP,5001)
+		end
+	end
+	
+	print(getarray.."/"..hitRound.."/"..setYbox)
+	
+	RandomSet = setYbox:split()
+	for i = 1 , #RandomSet do
+		print(RandomSet[i])
+	end
 	
 ----------------------------------------
 ----------- SendballPosition timer
@@ -647,6 +661,32 @@ function P1_GAMESTART:setRoundRules()
 	if CountRound == GameEndRound then
 		sceneManager:changeScene("GameEnd", 1, SceneManager.fade, easing.linear)
 	elseif CountRound >= 11 then
+		if CountRound == 11 then
+			self:removeChild(HitBallPicture)
+		end
+		
+		blueboxScore = math.abs(blueboxScore)
+		purpleboxScore = math.abs(purpleboxScore)
+		redboxScore = math.abs(redboxScore)
+		greenboxScore = math.abs(greenboxScore)
+		pinkboxScore = math.abs(pinkboxScore)
+		whiteboxScore = math.abs(whiteboxScore)
+		
+		if CountRound == 11 then
+			Baffle = BaffleBox.new(self,280,RandomSet[3],"box3",.2,.5)
+		end
+		if CountRound == 12 then
+			Baffle = BaffleBox.new(self,300,RandomSet[4],"box4",.2,.5)
+		end
+		if CountRound == 13 then
+			Baffle = BaffleBox.new(self,320,RandomSet[5],"box5",.2,.5)
+		end
+		if CountRound == 14 then
+			Baffle = BaffleBox.new(self,330,RandomSet[6],"box6",.2,.5)
+		end
+		if CountRound == 15 then
+			Baffle = BaffleBox.new(self,350,RandomSet[7],"box7",.2,.5)
+		end
 		
 	elseif CountRound >= 6 then
 		print("in")
@@ -654,8 +694,8 @@ function P1_GAMESTART:setRoundRules()
 		if setBox then
 		-- World is locked have delayTime
 			Timer.delayedCall(.5, function()
-				firstBaffle = BaffleBox.new(self,200,200,"box",.5,1)
-				firstBaffle2 = BaffleBox.new(self,250,200,"box2",.5,1)
+				Baffle = BaffleBox.new(self,220,RandomSet[1]+50,"box",.5,1)
+				Baffle = BaffleBox.new(self,380,RandomSet[2],"box2",.5,1)
 				setBox = false
 			end)
 		end

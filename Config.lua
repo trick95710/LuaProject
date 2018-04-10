@@ -16,7 +16,7 @@ debugRound = true
 Round = "P1"
 
 -- CountRound
-CountRound = 4
+CountRound = 1
 -- GameEndRound
 GameEndRound = 16
 

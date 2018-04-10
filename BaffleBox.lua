@@ -24,7 +24,7 @@ function BaffleBox:init(Player, x, y, name , ScaleX, ScaleY)
 	shape:setAsBox(sprite:getWidth()/2, sprite:getHeight()/2)
 	body:createFixture{shape = shape, density = 1, restitution = 0.2, friction = 0.3}
 
-	
+	print(sprite:getHeight()/2)
 	
 	Player:addChild(sprite)
 end

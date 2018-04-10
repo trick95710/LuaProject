@@ -2,6 +2,10 @@ Rules = Core.class(Sprite)
 
 function Rules:init()
 	
+	-- create background
+	local bg = Bitmap.new(Texture.new("picture/Rules/RulePicture.jpg"))
+	self:addChildAt(bg,1)
+	
 	AceSlide.init({
 		orientation = "horizontal",
 		spacing = 100,

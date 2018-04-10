@@ -1,32 +1,57 @@
+require "Config"
 GameEnd = gideros.class(Sprite)
 
 function GameEnd:init()
 	
-	Score_P1 = 0
-	Score_P2 = 0
+	-- create background
+	local bg = Bitmap.new(Texture.new("picture/GameEndPicture.jpg"))
+	self:addChildAt(bg,1)
 	
-	User = "P1"
+	print(User)
+	
+	if debugRound and User == nil then
+		score_P1 = 1
+		score_P2 = 0
+		
+		User = "P1"
+	end
 	
 	
 	if User == "P1" then
-		if Score_P1 > Score_P2 then
-			print("你贏了")
-		elseif Score_P1 < Score_P2 then
-			print("你輸了")
-		elseif Score_P1 == Score_P2 then
-			print("平手")
+		if score_P1 > score_P2 then
+			local show_User = TextField.new(scorefont, "\t you Win fraction:".. score_P1.. "\n P2 fraction:".. score_P2)
+			show_User:setPosition(25,150)
+			self:addChild(show_User)
+		elseif score_P1 < score_P2 then
+			local show_User = TextField.new(scorefont, "\t you Lose fraction:".. score_P1.. "\n P2 fraction:".. score_P2)
+			show_User:setPosition(25,150)
+			self:addChild(show_User)
 		end
 	elseif User == "P2" then
-		if Score_P2 > Score_P1 then
-			print("你贏了")
-		elseif Score_P2 < Score_P1 then
-			print("你輸了")
-		elseif Score_P2 == Score_P1 then
-			print("平手")
+		if score_P1 > score_P2 then
+			local show_User2 = TextField.new(scorefont, "\t you Win fraction:".. score_P2.."\n P1 fraction:".. score_P1)
+			show_User2:setPosition(30,150)
+			self:addChild(show_User2)
+		elseif score_P1 < score_P2 then
+			local show_User2 = TextField.new(scorefont, "\t you Lose fraction:".. score_P2.." \n P1 fraction:".. score_P1)
+			show_User2:setPosition(30,150)
+			self:addChild(show_User2)
 		end
 	end
 	
-
+	local GameOver = Bitmap.new(Texture.new("picture/GameOver.png"))
+	GameOver:setPosition(100,25)
+    self:addChild(GameOver)
+	
+	
+	-- create button
+	local Menubutton = Button.new(imgUp, imgDown, "主選單")
+	Menubutton:setPosition(225,225)
+	Menubutton:addEventListener("click", function()
+		sceneManager:changeScene("start", 1, SceneManager.fade, easing.linear) 
+	end)
+	self:addChild(Menubutton)
+	
 
 
 -----------------------------------------------------------------------

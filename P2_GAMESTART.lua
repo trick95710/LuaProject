@@ -3,10 +3,9 @@ require "box2d"
 require "AddFunction"
 P2_GAMESTART = Core.class(Sprite)
 
-User = "P2"
 
 function P2_GAMESTART:init()
-
+	User = "P2"
 
 ----------- UDP
 
@@ -351,7 +350,9 @@ function P2_GAMESTART:init()
 		
 		CountRound = CountRound + 1
 		
-		
+		if debugRound then
+			self:setRoundRules()
+		end
 		print("P2_GAMESTART CountRound: " .. CountRound)
 	end
 ----------- 畫面佈局：
@@ -624,14 +625,53 @@ function P2_GAMESTART:setRoundRules()
 	if CountRound == GameEndRound then
 		sceneManager:changeScene("GameEnd", 1, SceneManager.fade, easing.linear)
 	elseif CountRound >= 11 then
-		
+		Timer.delayedCall(.5, function()
+			if debugRound then
+				if CountRound == 11 then
+					Baffle = BaffleBox.new(self,280,100,"box3",.2,.5)
+				end
+				if CountRound == 12 then
+					Baffle = BaffleBox.new(self,300,140,"box4",.2,.5)
+				end
+				if CountRound == 13 then
+					Baffle = BaffleBox.new(self,320,180,"box5",.2,.5)
+				end
+				if CountRound == 14 then
+					Baffle = BaffleBox.new(self,330,240,"box6",.2,.5)
+				end
+				if CountRound == 15 then
+					Baffle = BaffleBox.new(self,350,280,"box7",.2,.5)
+				end
+			else
+				if CountRound == 11 then
+					Baffle = BaffleBox.new(self,280,RandomSet[3],"box3",.2,.5)
+				end
+				if CountRound == 12 then
+					Baffle = BaffleBox.new(self,300,RandomSet[4],"box4",.2,.5)
+				end
+				if CountRound == 13 then
+					Baffle = BaffleBox.new(self,320,RandomSet[5],"box5",.2,.5)
+				end
+				if CountRound == 14 then
+					Baffle = BaffleBox.new(self,330,RandomSet[6],"box6",.2,.5)
+				end
+				if CountRound == 15 then
+					Baffle = BaffleBox.new(self,350,RandomSet[7],"box7",.2,.5)
+				end
+			end
+		end)
 	elseif CountRound >= 6 then
 		self:SixRound()
 		if setBox then
 		-- World is locked have delayTime
 			Timer.delayedCall(.5, function()
-				firstBaffle = BaffleBox.new(self,200,200,"box",.5,1)
-				firstBaffle2 = BaffleBox.new(self,250,200,"box2",.5,1)
+				if debugRound then
+					Baffle = BaffleBox.new(self,220,200,"box",.5,1)
+					Baffle = BaffleBox.new(self,380,250,"box2",.5,1)
+				else
+					Baffle = BaffleBox.new(self,220,GetHitBall[11],"box",.5,1)
+					Baffle = BaffleBox.new(self,380,GetHitBall[12],"box2",.5,1)
+				end
 				setBox = false
 			end)
 		end
