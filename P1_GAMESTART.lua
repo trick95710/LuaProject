@@ -230,6 +230,7 @@ function P1_GAMESTART:init()
 				resetBall()
 			end
 			SpeedX , SpeedY = ball_body:getLinearVelocity()
+			print(SpeedY)
 			if tostring(SpeedY) == "-4.7710671054872e-021" then
 				resetBall()
 			end
