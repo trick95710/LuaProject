@@ -32,15 +32,10 @@ function start:init()
 	end)
 	menu:addChild(Rules)
 	
-	--[[
-	local endButton = Button.new(imgUp, imgDown, "結束遊戲")
-	--endButton:setPosition(center_height,center_width+70)
-	endButton:addEventListener("click", function()
-		-- it should be used on Android only.
-		Application:exit()
-	end)
-	menu:addChild(endButton)
-	]]
+	local GameEndText = TextField.new(TTFont.new("font/Barrelhouse All Caps.ttf", 50, true), "Ball Shooter")
+	GameEndText:setTextColor(0xad0808)
+	GameEndText:setPosition(30,80)
+	self:addChild(GameEndText)
 	
 	
 	-- create background
