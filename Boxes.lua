@@ -1,4 +1,4 @@
-require "Config"
+--require "Config"
 Boxes = Core.class(Sprite)
 
 function Boxes:init(Player)

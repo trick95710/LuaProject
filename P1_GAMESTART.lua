@@ -1,6 +1,6 @@
-require "Config"
-require "box2d"
-require "AddFunction"
+--require "Config"
+
+
 P1_GAMESTART = Core.class(Sprite)
 
 

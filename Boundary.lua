@@ -1,4 +1,4 @@
-require "box2d"
+--require "box2d"
 Boundary = Core.class(Sprite)
 
 function Boundary:init(Player)

@@ -1,4 +1,4 @@
-require "Config"
+--require "Config"
 BackStart = Core.class(Sprite)
 
 function BackStart:init(Scene, SetX , SetY , SetScaleX , SetScaleY)

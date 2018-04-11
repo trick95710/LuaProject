@@ -1,29 +1,67 @@
 <project>
- <properties scaleMode="0" logicalWidth="320" osx_category="5" orientation="0" tv_icon="" osx_org="GiderosMobile" html5_fbinstant="0" html5_pack="0" encryptAssets="0" build_number="1" vsync="0" osx_bundle="com.yourdomain." mouseTouchOrder="0" exportMode="0" autorotation="0" version_code="1" splash_v_image="" win_domain="giderosmobile.com" osx_signingId="" html5_fbload="100" architecture="0" windowHeight="0" packageName="com.yourdomain.yourapp" osx_installerId="" app_icon="" winrt_package="com.yourdomain.yourapp" windowWidth="0" html5_host="" version="1.0" osx_domain="giderosmobile.com" disableSplash="0" app_name="" html5_mem="256" fps="60" splash_h_image="" android_template="0" splashScaleMode="0" touchToMouse="1" retinaDisplay="0" backgroundColor="#ffffff" mouseToTouch="1" encryptCode="0" iosDevice="0" logicalHeight="480" ios_bundle="com.yourdomain." win_org="GiderosMobile" winrt_org="GiderosMobile">
+ <properties ios_bundle="com.yourdomain." osx_bundle="com.yourdomain." architecture="0" android_template="0" splash_v_image="" splash_h_image="" osx_category="5" build_number="1" orientation="0" winrt_package="com.yourdomain.yourapp" logicalWidth="320" osx_org="GiderosMobile" disableSplash="0" windowWidth="0" tv_icon="" html5_host="" iosDevice="0" retinaDisplay="0" splashScaleMode="0" app_icon="" autorotation="0" osx_signingId="" html5_fbinstant="0" version="1.0" mouseTouchOrder="0" backgroundColor="#ffffff" html5_mem="256" mouseToTouch="1" encryptAssets="0" packageName="com.yourdomain.yourapp" osx_installerId="" touchToMouse="1" fps="60" html5_pack="0" scaleMode="0" windowHeight="0" osx_domain="giderosmobile.com" logicalHeight="480" version_code="1" winrt_org="GiderosMobile" encryptCode="0" win_org="GiderosMobile" exportMode="0" win_domain="giderosmobile.com" app_name="" vsync="0" html5_fbload="100">
   <imageScales/>
   <plugins>
+   <plugin enabled="0" name="Ads"/>
+   <plugin enabled="0" name="Bitop"/>
+   <plugin enabled="0" name="Bump"/>
+   <plugin enabled="0" name="Controller"/>
+   <plugin enabled="0" name="Exampleplugin"/>
+   <plugin enabled="0" name="Flurry"/>
+   <plugin enabled="0" name="LiquidFun"/>
+   <plugin enabled="0" name="Lpeg"/>
    <plugin enabled="1" name="Lua Socket"/>
+   <plugin enabled="0" name="LuaFileSystem"/>
+   <plugin enabled="0" name="LuaSqlite3"/>
+   <plugin enabled="0" name="Media plugin"/>
+   <plugin enabled="0" name="Native"/>
+   <plugin enabled="0" name="Ogg"/>
+   <plugin enabled="1" name="Require">
+    <property name="reqAccel" value="0"/>
+    <property name="reqCanOpenUrl" value=""/>
+    <property name="reqCompass" value="0"/>
+    <property name="reqEnable64bits" value="0"/>
+    <property name="reqExpRegCompliance" value="0"/>
+    <property name="reqFullOrientation" value="0"/>
+    <property name="reqGps" value="0"/>
+    <property name="reqGpsBackground" value="0"/>
+    <property name="reqGpsReason" value=""/>
+    <property name="reqGyro" value="0"/>
+    <property name="reqMaxAspect" value="0"/>
+    <property name="reqNoGps" value="0"/>
+    <property name="reqNoInternet" value="0"/>
+    <property name="reqNoSensor" value="0"/>
+    <property name="reqNoVibrator" value="0"/>
+    <property name="reqPhoneOnly" value="0"/>
+    <property name="reqScreenShape" value="0"/>
+    <property name="reqTVCompat" value="0"/>
+    <property name="reqTVExtCompat" value="0"/>
+    <property name="reqTouch" value="0"/>
+    <property name="reqWriteExternalStorage" value="0"/>
+   </plugin>
+   <plugin enabled="0" name="Struct"/>
+   <plugin enabled="0" name="TextToSpeech"/>
   </plugins>
   <exports>
    <export name="APK">
-    <property value="" name="androidPath"/>
-    <property value="" name="androidSdk"/>
-    <property value="19" name="androidTarget"/>
-    <property value="" name="androidTools"/>
-    <property value="1" name="buildApk"/>
-    <property value="1" name="deployApk"/>
-    <property value="" name="javaPath"/>
-    <property value="king" name="keyAlias"/>
-    <property value="C:/table/KeyStore.jks" name="keyStore"/>
-    <property value="com.yourdomain.yourapp" name="packageName"/>
+    <property name="androidPath" value=""/>
+    <property name="androidSdk" value=""/>
+    <property name="androidTarget" value="19"/>
+    <property name="androidTools" value=""/>
+    <property name="buildApk" value="1"/>
+    <property name="deployApk" value="1"/>
+    <property name="javaPath" value="C:/Program Files/Java/jdk1.8.0_161"/>
+    <property name="keyAlias" value="mydomain"/>
+    <property name="keyStore" value="C:/key/KeyStore.jks"/>
+    <property name="packageName" value="com.yourdomain.yourapp"/>
    </export>
   </exports>
  </properties>
  <folder name="font">
+  <file source="font/MISTV.TTF"/>
   <file source="font/W1.ttc"/>
   <file source="font/Barrelhouse All Caps.ttf"/>
   <file source="font/Freakshow.ttf"/>
-  <file source="font/MISTV___.TTF"/>
   <file source="font/SentyTang.ttf"/>
   <file source="font/SentyChalk.ttf"/>
   <file source="font/setofont.ttf"/>
@@ -52,13 +90,13 @@
    <file source="picture/JudgeBall/Emerald.png"/>
    <file source="picture/JudgeBall/blue.png"/>
   </folder>
+  <file source="picture/ButtonUp.png"/>
+  <file source="picture/ButtonDown.png"/>
   <file source="picture/IpconnectPicture.png"/>
   <file source="picture/GameEndPicture.jpg"/>
   <file source="picture/GameOver.png"/>
   <file source="picture/marker.png"/>
   <file source="picture/bar.png"/>
-  <file source="picture/Button_Up.png"/>
-  <file source="picture/Button_Down.png"/>
   <file source="picture/crate.png"/>
   <file source="picture/left-up.png"/>
   <file source="picture/left-down.png"/>
@@ -94,15 +132,12 @@
  <file source="Boundary.lua"/>
  <file source="BackStart.lua"/>
  <file source="Boxes.lua"/>
- <file source="AddFunction.lua"/>
+ <file source="AddFunction.lua" excludeFromExecution="1"/>
  <file source="Ace.Slide.lua"/>
  <file source="gtween.lua"/>
  <file source="View.lua"/>
  <file source="easing.lua"/>
- <file source="Config.lua"/>
- <file source="Settings.lua"/>
- <file source="Sounds.lua"/>
- <file source="Music.lua"/>
+ <file source="Config.lua" excludeFromExecution="1"/>
  <file source="socket.lua"/>
  <file source="button.lua"/>
  <file source="scenemanager.lua"/>

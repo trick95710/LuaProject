@@ -1,4 +1,6 @@
 require "Config"
+require "AddFunction"
+require "box2d"
 
 application:setScaleMode("letterbox")
 application:setOrientation(Stage.LANDSCAPE_LEFT)

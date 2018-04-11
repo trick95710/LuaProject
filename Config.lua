@@ -7,7 +7,7 @@ center_height = application:getContentHeight()/2
 -- set font
 scorefont = TTFont.new("font/SentyChalk.ttf", 20, true)
 -- set debug 
-debugRound = false
+debugRound = true
 
 -- set reRound = "P1" then
 -- is P1 turn
@@ -45,8 +45,8 @@ newhiteboxScore = -whiteboxScore
 setBox = true
 
 -- set Button Picture
-imgUp = "picture/button_Up.png"
-imgDown = "picture/button_Down.png"
+imgUp = "picture/ButtonUp.png"
+imgDown = "picture/ButtonDown.png"
 
 -- set BackBtnSize
 backBtnScaleX = .7

@@ -1,4 +1,4 @@
-require "Config"
+--require "Config"
 GameEnd = gideros.class(Sprite)
 
 function GameEnd:init()
@@ -56,7 +56,7 @@ function GameEnd:init()
 		end
 	end
 	
-	local GameEndText = TextField.new(TTFont.new("font/巧風體W1.ttc", 100, true), "分數結算")
+	local GameEndText = TextField.new(TTFont.new("font/W1.ttc", 100, true), "分數結算")
 	GameEndText:setTextColor(TextColor)
 	GameEndText:setPosition(SetX-75,SetY-50)
 	self:addChild(GameEndText)
