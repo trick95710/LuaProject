@@ -630,14 +630,14 @@ function P1_GAMESTART:setRoundRules()
 			self:removeChild(HitBallPicture)
 			firstRemove = false
 		end
-		
+		print("123")
 		blueboxScore = math.abs(blueboxScore)
 		purpleboxScore = math.abs(purpleboxScore)
 		redboxScore = math.abs(redboxScore)
 		greenboxScore = math.abs(greenboxScore)
 		pinkboxScore = math.abs(pinkboxScore)
 		whiteboxScore = math.abs(whiteboxScore)
-		if Round == "P1" then
+		if Round == "P1" or debugRound then
 			if CountRound == 11 then
 				Baffle = BaffleBox.new(self,280,RandomSet[3],"box3",.2,.5)
 			end

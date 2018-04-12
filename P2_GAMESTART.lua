@@ -717,7 +717,11 @@ function P2_GAMESTART:JudgeHitBall()
 	
 	
 
-	local judge_ball = HitBall_switch[GetHitBall[CountRound-5]]
+	if debugRound then
+		judge_ball = HitBall_switch[JudgeHitBox[CountRound-5]]
+	else
+		judge_ball = HitBall_switch[GetHitBall[CountRound-5]]
+	end
 
 	
 	if(judge_ball) then

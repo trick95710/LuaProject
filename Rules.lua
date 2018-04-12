@@ -6,31 +6,32 @@ function Rules:init()
 	local bg = Bitmap.new(Texture.new("picture/Rules/RulePicture.jpg"))
 	self:addChildAt(bg,1)
 	
-	AceSlide.init({
+	local slider = AceSlide.new({
 		orientation = "",
 		spacing = 100,
-		parent = self,
 		speed = 5,
 		unfocusedAlpha = 0.75,
 		easing = nil,
 		allowDrag = true,
 		dragOffset = 10
 	})
+	
+	self:addChild(slider)
 
 	--create 10 boxes
 	for i = 1, 10 do
 		local box = Bitmap.new(Texture.new("picture/crate.png"))
-		AceSlide.add(box)
+		slider:add(box)
 	end
 
 	--just to show as example
 	--of modifying all elements
-	AceSlide.applyToAll(function(elem)
+	slider:applyToAll(function(elem)
 		elem:setScale(2)
 	end)
 
 	--display slider
-	AceSlide.show()
+	slider:show()
 
 	local ArrowUp = Bitmap.new(Texture.new("picture/Arrow.png"))
 	ArrowUp:setScale(.1,.1)
