@@ -7,7 +7,7 @@ function Rules:init()
 	self:addChildAt(bg,1)
 	
 	AceSlide.init({
-		orientation = "horizontal",
+		orientation = "",
 		spacing = 100,
 		parent = self,
 		speed = 5,
@@ -32,33 +32,19 @@ function Rules:init()
 	--display slider
 	AceSlide.show()
 
+	local ArrowUp = Bitmap.new(Texture.new("picture/Arrow.png"))
+	ArrowUp:setScale(.1,.1)
+	ArrowUp:setAnchorPoint(.5,.5)
+	ArrowUp:setPosition(100,center_width)
+	self:addChild(ArrowUp)
 
-	local imgButton_Up = "picture/Rules/right-up.png"
-	local imgButton_Down = "picture/Rules/right-down.png"
-	
-	local imgScaleX = .2
-	local imgScaleY = .2
-	--create buttons to switch content
-	local rightButton = Button.new(imgButton_Up, imgButton_Down, "")
-	rightButton:setPosition(480-70,160)
-	rightButton:setScale(imgScaleX,imgScaleY)
-	self:addChild(rightButton)
-	rightButton:addEventListener("click", 
-		function()	
-			AceSlide.nextItem()
-		end
-	)
+	local ArrowDown = Bitmap.new(Texture.new("picture/Arrow.png"))
+	ArrowDown:setScale(.1,.1)
+	ArrowDown:setAnchorPoint(.5,.5)
+	ArrowDown:setRotation(180)
+	ArrowDown:setPosition(370,center_width)
+	self:addChild(ArrowDown)
 
-	local leftButton = Button.new(imgButton_Up, imgButton_Down, "")
-	leftButton:setPosition(70,160)
-	leftButton:setScale(imgScaleX,imgScaleY)
-	leftButton:setRotation(180)
-	self:addChild(leftButton)
-	leftButton:addEventListener("click", 
-		function()	
-			AceSlide.prevItem()
-		end
-	)
 	
 	BackBtnIp = BackStart.new(self, center_height, 300 , 1 , 1)
 	

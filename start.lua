@@ -11,7 +11,7 @@ function start:init()
 	local Startbutton = Button.new(imgUp, imgDown, "開始遊戲")
 	--Startbutton:setPosition(center_height,center_width-70)
 	Startbutton:addEventListener("click", function()
-		sceneManager:changeScene("Ipconnect", 1, SceneManager.fade, easing.linear) 
+		sceneManager:changeScene("Rule", 1, SceneManager.fade, easing.linear) 
 	end)
 	menu:addChild(Startbutton)
 	

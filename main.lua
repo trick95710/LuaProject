@@ -6,10 +6,6 @@ application:setScaleMode("letterbox")
 application:setOrientation(Stage.LANDSCAPE_LEFT)
 application:setBackgroundColor(0xFFFFFF)
 
---create settings instance
-
---Ifmusic 0 is open  
-Ifmusic = 0
 
 --background music
 music = Sound.new("sound/YouTube- Whistling Down the Road.mp3")
@@ -21,6 +17,8 @@ Btn_Ready = "NotReady"
 sceneManager = SceneManager.new({
 	--start scene
 	["start"] = start,
+	--Rule scene
+	["Rule"] = Rule,
 	--Rules scene
 	["Rules"] = Rules,
 	--options scene

@@ -1,22 +1,22 @@
 <project>
- <properties ios_bundle="com.yourdomain." osx_bundle="com.yourdomain." architecture="0" android_template="0" splash_v_image="" splash_h_image="" osx_category="5" build_number="1" orientation="0" winrt_package="com.yourdomain.yourapp" logicalWidth="320" osx_org="GiderosMobile" disableSplash="0" windowWidth="0" tv_icon="" html5_host="" iosDevice="0" retinaDisplay="0" splashScaleMode="0" app_icon="" autorotation="0" osx_signingId="" html5_fbinstant="0" version="1.0" mouseTouchOrder="0" backgroundColor="#ffffff" html5_mem="256" mouseToTouch="1" encryptAssets="0" packageName="com.yourdomain.yourapp" osx_installerId="" touchToMouse="1" fps="60" html5_pack="0" scaleMode="0" windowHeight="0" osx_domain="giderosmobile.com" logicalHeight="480" version_code="1" winrt_org="GiderosMobile" encryptCode="0" win_org="GiderosMobile" exportMode="0" win_domain="giderosmobile.com" app_name="" vsync="0" html5_fbload="100">
+ <properties splash_h_image="" html5_fbinstant="0" windowWidth="0" html5_host="" html5_fbload="100" architecture="0" iosDevice="0" encryptCode="0" orientation="0" splashScaleMode="0" logicalHeight="480" autorotation="0" win_org="GiderosMobile" osx_installerId="" backgroundColor="#ffffff" html5_pack="0" osx_domain="giderosmobile.com" packageName="com.yourdomain.yourapp" html5_mem="256" ios_bundle="com.yourdomain." fps="60" osx_signingId="" winrt_package="com.yourdomain.yourapp" logicalWidth="320" windowHeight="0" disableSplash="0" retinaDisplay="0" winrt_org="GiderosMobile" version_code="1" win_domain="giderosmobile.com" build_number="1" tv_icon="" app_name="" mouseToTouch="1" app_icon="" osx_category="5" exportMode="0" splash_v_image="" touchToMouse="1" scaleMode="0" encryptAssets="0" android_template="0" version="1.0" mouseTouchOrder="0" osx_org="GiderosMobile" osx_bundle="com.yourdomain." vsync="0">
   <imageScales/>
   <plugins>
-   <plugin enabled="0" name="Ads"/>
-   <plugin enabled="0" name="Bitop"/>
-   <plugin enabled="0" name="Bump"/>
-   <plugin enabled="0" name="Controller"/>
-   <plugin enabled="0" name="Exampleplugin"/>
-   <plugin enabled="0" name="Flurry"/>
-   <plugin enabled="0" name="LiquidFun"/>
-   <plugin enabled="0" name="Lpeg"/>
-   <plugin enabled="1" name="Lua Socket"/>
-   <plugin enabled="0" name="LuaFileSystem"/>
-   <plugin enabled="0" name="LuaSqlite3"/>
-   <plugin enabled="0" name="Media plugin"/>
-   <plugin enabled="0" name="Native"/>
-   <plugin enabled="0" name="Ogg"/>
-   <plugin enabled="1" name="Require">
+   <plugin name="Ads" enabled="0"/>
+   <plugin name="Bitop" enabled="0"/>
+   <plugin name="Bump" enabled="0"/>
+   <plugin name="Controller" enabled="0"/>
+   <plugin name="Exampleplugin" enabled="0"/>
+   <plugin name="Flurry" enabled="0"/>
+   <plugin name="LiquidFun" enabled="0"/>
+   <plugin name="Lpeg" enabled="0"/>
+   <plugin name="Lua Socket" enabled="1"/>
+   <plugin name="LuaFileSystem" enabled="0"/>
+   <plugin name="LuaSqlite3" enabled="0"/>
+   <plugin name="Media plugin" enabled="0"/>
+   <plugin name="Native" enabled="0"/>
+   <plugin name="Ogg" enabled="0"/>
+   <plugin name="Require" enabled="1">
     <property name="reqAccel" value="0"/>
     <property name="reqCanOpenUrl" value=""/>
     <property name="reqCompass" value="0"/>
@@ -39,8 +39,8 @@
     <property name="reqTouch" value="0"/>
     <property name="reqWriteExternalStorage" value="0"/>
    </plugin>
-   <plugin enabled="0" name="Struct"/>
-   <plugin enabled="0" name="TextToSpeech"/>
+   <plugin name="Struct" enabled="0"/>
+   <plugin name="TextToSpeech" enabled="0"/>
   </plugins>
   <exports>
    <export name="APK">
@@ -58,15 +58,12 @@
   </exports>
  </properties>
  <folder name="font">
-  <file source="font/MISTV.TTF"/>
   <file source="font/W1.ttc"/>
   <file source="font/Barrelhouse All Caps.ttf"/>
-  <file source="font/Freakshow.ttf"/>
   <file source="font/SentyTang.ttf"/>
   <file source="font/SentyChalk.ttf"/>
   <file source="font/setofont.ttf"/>
   <file source="font/ukai.ttc"/>
-  <file source="font/tahoma.ttf"/>
   <file source="font/kaiu.ttf"/>
  </folder>
  <folder name="sound">
@@ -90,16 +87,14 @@
    <file source="picture/JudgeBall/Emerald.png"/>
    <file source="picture/JudgeBall/blue.png"/>
   </folder>
+  <file source="picture/Arrow.png"/>
   <file source="picture/ButtonUp.png"/>
   <file source="picture/ButtonDown.png"/>
   <file source="picture/IpconnectPicture.png"/>
   <file source="picture/GameEndPicture.jpg"/>
-  <file source="picture/GameOver.png"/>
   <file source="picture/marker.png"/>
   <file source="picture/bar.png"/>
   <file source="picture/crate.png"/>
-  <file source="picture/left-up.png"/>
-  <file source="picture/left-down.png"/>
   <file source="picture/baffle.png"/>
   <file source="picture/RoundBox.png"/>
   <file source="picture/startpicture.jpg"/>
@@ -112,12 +107,12 @@
   <file source="picture/pinkbox.png"/>
   <file source="picture/greenbox.png"/>
   <file source="picture/bluebox.png"/>
-  <file source="picture/bg5.jpg"/>
   <file source="picture/bg4.jpg"/>
   <file source="picture/bg3.png"/>
   <file source="picture/spritesheet.png"/>
   <file source="picture/ball.png"/>
  </folder>
+ <file source="Rule.lua"/>
  <file source="main.lua"/>
  <file source="start.lua"/>
  <file source="Rules.lua"/>
@@ -132,13 +127,13 @@
  <file source="Boundary.lua"/>
  <file source="BackStart.lua"/>
  <file source="Boxes.lua"/>
- <file source="AddFunction.lua" excludeFromExecution="1"/>
- <file source="Ace.Slide.lua"/>
- <file source="gtween.lua"/>
- <file source="View.lua"/>
- <file source="easing.lua"/>
- <file source="Config.lua" excludeFromExecution="1"/>
- <file source="socket.lua"/>
  <file source="button.lua"/>
+ <file source="AddFunction.lua" excludeFromExecution="1"/>
+ <file source="Config.lua" excludeFromExecution="1"/>
  <file source="scenemanager.lua"/>
+ <file source="easing.lua"/>
+ <file source="socket.lua"/>
+ <file source="View.lua"/>
+ <file source="gtween.lua"/>
+ <file source="Ace.Slide.lua"/>
 </project>

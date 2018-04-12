@@ -264,6 +264,7 @@ function nextItem()
 	else
 		gotoItem(total)
 	end
+	return cur
 end
 
 function prevItem()
@@ -272,6 +273,7 @@ function prevItem()
 	else
 		gotoItem(1)
 	end
+	return cur
 end
 
 function firstItem()
