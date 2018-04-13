@@ -839,4 +839,17 @@ end
 
 function P1_GAMESTART:onTransitionOutEnd()
 	print("P1_GAMESTART - exit end")
+	
+	setRound:stop()
+	drawtimer:stop()
+	Get_score_P2_Timer:stop()
+	setballposition:stop()
+	
+	self:removeEventListener(Event.ENTER_FRAME, self.onEnterFrame, self)
+	
+	ball:removeEventListener(Event.MOUSE_DOWN, onMouseClickDown, self)
+	ball:removeEventListener(Event.MOUSE_MOVE, onMouseClickMove, self)
+	ball:removeEventListener(Event.MOUSE_UP, onMouseClickUp, self)
+		
+	self.world:removeEventListener(Event.BEGIN_CONTACT, P1_onBeginContact)
 end

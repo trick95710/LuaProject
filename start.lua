@@ -44,7 +44,22 @@ function start:init()
 	
 	menu:setPosition(center_height,center_width)
 	
+	local debugtext = TextField.new(nil, "debugMode On")
+	debugtext:setPosition(23, 50)
 	
+
+	
+	local debug_true = Button.new("picture/Transparent.png", "picture/Transparent.png", "")
+	debug_true:setPosition(0,-15)
+	self:addChild(debug_true)
+	debug_true:addEventListener("click", 
+		function()	
+			if debugRound == false then
+				debugRound = true
+				self:addChild(debugtext)
+			end
+		end
+	)
 	
 -- Get in or out to enter down of all the function
 	self:addEventListener("enterBegin", self.onTransitionInBegin, self)

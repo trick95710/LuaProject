@@ -1,5 +1,5 @@
 <project>
- <properties encryptCode="0" iosDevice="0" splash_h_image="" html5_mem="256" version="1.0" mouseTouchOrder="0" win_domain="giderosmobile.com" win_org="GiderosMobile" ios_bundle="com.yourdomain." vsync="0" fps="60" winrt_package="com.yourdomain.yourapp" html5_pack="0" logicalWidth="320" retinaDisplay="0" html5_host="" touchToMouse="1" windowWidth="0" splashScaleMode="0" exportMode="0" windowHeight="0" app_name="" architecture="0" html5_fbload="100" osx_category="5" osx_installerId="" version_code="1" logicalHeight="480" encryptAssets="0" orientation="0" osx_bundle="com.yourdomain." html5_fbinstant="0" android_template="0" splash_v_image="" osx_org="GiderosMobile" build_number="1" app_icon="" scaleMode="0" backgroundColor="#ffffff" packageName="com.yourdomain.yourapp" disableSplash="0" osx_domain="giderosmobile.com" tv_icon="" winrt_org="GiderosMobile" mouseToTouch="1" autorotation="0" osx_signingId="">
+ <properties mouseTouchOrder="0" backgroundColor="#ffffff" autorotation="0" encryptCode="0" app_name="" retinaDisplay="0" architecture="0" html5_host="" osx_signingId="" fps="60" splash_h_image="" osx_category="5" build_number="1" winrt_package="com.yourdomain.yourapp" vsync="0" windowWidth="0" logicalHeight="480" version="1.0" win_org="GiderosMobile" html5_fbload="100" logicalWidth="320" osx_domain="giderosmobile.com" html5_fbinstant="0" encryptAssets="0" orientation="0" tv_icon="" exportMode="0" mouseToTouch="1" win_domain="giderosmobile.com" winrt_org="GiderosMobile" version_code="1" splash_v_image="" ios_bundle="com.yourdomain." html5_mem="256" iosDevice="0" osx_bundle="com.yourdomain." windowHeight="0" disableSplash="0" touchToMouse="1" app_icon="" osx_org="GiderosMobile" packageName="com.yourdomain.yourapp" scaleMode="0" html5_pack="0" splashScaleMode="0" android_template="0" osx_installerId="">
   <imageScales/>
   <plugins>
    <plugin name="Ads" enabled="0"/>
@@ -96,6 +96,7 @@
    <file source="picture/JudgeBall/Emerald.png"/>
    <file source="picture/JudgeBall/blue.png"/>
   </folder>
+  <file source="picture/Transparent.png"/>
   <file source="picture/Arrow.png"/>
   <file source="picture/ButtonUp.png"/>
   <file source="picture/ButtonDown.png"/>
@@ -103,7 +104,6 @@
   <file source="picture/GameEndPicture.jpg"/>
   <file source="picture/marker.png"/>
   <file source="picture/bar.png"/>
-  <file source="picture/crate.png"/>
   <file source="picture/baffle.png"/>
   <file source="picture/RoundBox.png"/>
   <file source="picture/startpicture.jpg"/>
@@ -150,6 +150,6 @@
  <file source="P1_GAMESTART.lua"/>
  <file source="P2_GAMESTART.lua"/>
  <file source="GameEnd.lua"/>
- <file excludeFromExecution="1" source="AddFunction.lua"/>
- <file excludeFromExecution="1" source="Config.lua"/>
+ <file source="AddFunction.lua" excludeFromExecution="1"/>
+ <file source="Config.lua" excludeFromExecution="1"/>
 </project>

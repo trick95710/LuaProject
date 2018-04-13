@@ -67,3 +67,9 @@ Grayboardrule = Bitmap.new(Texture.new("picture/Rules/Grayboardrule.png"))
 Round6 = Bitmap.new(Texture.new("picture/Rules/Round6.png"))
 JudgeBall = Bitmap.new(Texture.new("picture/Rules/JudgeBall.png"))
 startrule = Bitmap.new(Texture.new("picture/Rules/startrule.png"))
+
+imgButton_Up = "picture/Rules/right-up.png"
+imgButton_Down = "picture/Rules/right-down.png"
+
+imgScaleX = .2
+imgScaleY = .2

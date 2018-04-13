@@ -1,6 +1,9 @@
 Rule = Core.class(Sprite)
 
 function Rule:init()
+
+	debugGOP1 = 0
+	debugGOP2 = 0
 	
 	-- create background
 	local bg = Bitmap.new(Texture.new("picture/Rules/RulePicture.jpg"))
@@ -19,8 +22,6 @@ function Rule:init()
 	self:addChild(slider)
 
 	--create 10 boxes
-	
-	
 	slider:add(startrule)
 	slider:add(Redboardrule)
 	slider:add(Grayboardrule)
@@ -51,12 +52,7 @@ function Rule:init()
 	end)
 	--self:addChild(Startbutton)
 	
-
-	local imgButton_Up = "picture/Rules/right-up.png"
-	local imgButton_Down = "picture/Rules/right-down.png"
 	
-	local imgScaleX = .2
-	local imgScaleY = .2
 	--create buttons to switch content
 	local rightButton = Button.new(imgButton_Up, imgButton_Down, "")
 	rightButton:setPosition(480-70,160)
@@ -90,6 +86,35 @@ function Rule:init()
 	)
 	
 	BackBtn = BackStart.new(self)
+	
+	local debug_GOP1 = Button.new("picture/Transparent.png", "picture/Transparent.png", "")
+	debug_GOP1:setPosition(0,-15)
+	self:addChild(debug_GOP1)
+	debug_GOP1:addEventListener("click", 
+		function()	
+			if debugRound then
+				debugGOP1 = debugGOP1 +1
+				if debugGOP1 == 10 then
+					sceneManager:changeScene("P1_GAMESTART", 1, SceneManager.fade, easing.linear) 
+				end
+			end
+		end
+	)
+	
+	local debug_GOP2 = Button.new("picture/Transparent.png", "picture/Transparent.png", "")
+	debug_GOP2:setPosition(screen_height,-15)
+	self:addChild(debug_GOP2)
+	debug_GOP2:addEventListener("click", 
+		function()	
+			if debugRound then
+				debugGOP2 = debugGOP2 +1
+				print(debugGOP2)
+				if debugGOP2 == 10 then
+					sceneManager:changeScene("P1_GAMESTART", 1, SceneManager.fade, easing.linear) 
+				end
+			end
+		end
+	)
 	
 -- Get in or out to enter down of all the function
 	self:addEventListener("enterBegin", self.onTransitionInBegin, self)
