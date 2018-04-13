@@ -30,10 +30,7 @@ function ThirdRules:init()
 		)
 		layer:addChild(CancelButton)
 		
-		for i = 1, 10 do
-			local box = Bitmap.new(Texture.new("picture/crate.png"))
-			slider:add(box)
-		end
+		slider:add(bafflerule)
 		
 		slider:applyToAll(function(elem)
 			elem:setScale(1)

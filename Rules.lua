@@ -19,15 +19,20 @@ function Rules:init()
 	self:addChild(slider)
 
 	--create 10 boxes
-	for i = 1, 10 do
-		local box = Bitmap.new(Texture.new("picture/crate.png"))
-		slider:add(box)
-	end
+	slider:add(startrule)
+	slider:add(Redboardrule)
+	slider:add(Grayboardrule)
+	slider:add(RoundBoxrule)
+	slider:add(groundrule)
+	slider:add(ballrule)
+	slider:add(JudgeBall)
+	slider:add(Round6)
+	slider:add(bafflerule)
 
 	--just to show as example
 	--of modifying all elements
 	slider:applyToAll(function(elem)
-		elem:setScale(2)
+		elem:setScale(1)
 	end)
 
 	--display slider
@@ -36,14 +41,14 @@ function Rules:init()
 	local ArrowUp = Bitmap.new(Texture.new("picture/Arrow.png"))
 	ArrowUp:setScale(.1,.1)
 	ArrowUp:setAnchorPoint(.5,.5)
-	ArrowUp:setPosition(100,center_width)
+	ArrowUp:setPosition(70,center_width)
 	self:addChild(ArrowUp)
 
 	local ArrowDown = Bitmap.new(Texture.new("picture/Arrow.png"))
 	ArrowDown:setScale(.1,.1)
 	ArrowDown:setAnchorPoint(.5,.5)
 	ArrowDown:setRotation(180)
-	ArrowDown:setPosition(370,center_width)
+	ArrowDown:setPosition(410,center_width)
 	self:addChild(ArrowDown)
 
 	

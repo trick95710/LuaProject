@@ -30,10 +30,11 @@ function FirstRules:init()
 		)
 		layer:addChild(CancelButton)
 		
-		for i = 1, 10 do
-			local box = Bitmap.new(Texture.new("picture/crate.png"))
-			slider:add(box)
-		end
+		slider:add(startrule)
+		slider:add(Redboardrule)
+		slider:add(Grayboardrule)
+		slider:add(RoundBoxrule)
+		slider:add(groundrule)
 		
 		slider:applyToAll(function(elem)
 			elem:setScale(1)

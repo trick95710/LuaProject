@@ -2,7 +2,7 @@ start = Core.class(Sprite)
 
 function start:init()
 
-	local menu = VerticalView.new({padding = -15, easing = easing.outBounce})
+	local menu = VerticalView.new({padding = 10, easing = easing.outBounce})
 	
 	self:addChild(menu)
 	

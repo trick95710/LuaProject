@@ -255,6 +255,17 @@ function P2_GAMESTART:init()
 		until not GetArray
 	end)
 	GetP1Random:start()
+	
+	Ten = 0
+	
+	Ball2CountTimer = Timer.new(1000)
+	Ball2CountTimer:addEventListener(Event.TIMER,function()
+		Ten = Ten + 1
+		if Ten == 10 then
+			P2_resetBall()
+		end
+	end)
+	
 ----------------------------------------------------------------------
 
 ------- set world---------------------------------------------------------
@@ -358,6 +369,9 @@ function P2_GAMESTART:init()
 			self:setRoundRules()
 		end
 		print("P2_GAMESTART CountRound: " .. CountRound)
+		
+		Ball2CountTimer:stop()
+		Ten = 0
 	end
 ----------- 畫面佈局：
 	-- create background
@@ -476,7 +490,11 @@ function P2_GAMESTART:init()
 	self:addChildAt(self.slingshot_l2,6)
 	
 	
+	RulesFirst = FirstRules.new()
+	RulesSecond = SecondRules.new()
+	RulesThird = ThirdRules.new()
 	
+	self:addChild(RulesFirst)
 	
 --------------------------------------------------------------------------
 	self:addEventListener(Event.ENTER_FRAME, self.onEnterFrame, self)
@@ -578,6 +596,7 @@ function onMouseUp(self , event)
 		
 		
 		Ball2isAwake_Timer:start()
+		Ball2CountTimer:start()
 		
 		event:stopPropagation()
 	end
@@ -639,6 +658,7 @@ function P2_GAMESTART:setRoundRules()
 			if debugRound then
 				if CountRound == 11 then
 					Baffle = BaffleBox.new(self,280,100,"box3",.2,.5)
+					self:addChild(RulesThird)
 				end
 				if CountRound == 12 then
 					Baffle = BaffleBox.new(self,300,140,"box4",.2,.5)
@@ -655,6 +675,7 @@ function P2_GAMESTART:setRoundRules()
 			else
 				if CountRound == 11 then
 					Baffle = BaffleBox.new(self,280,GetHitBall[13],"box3",.2,.5)
+					self:addChild(RulesThird)
 				end
 				if CountRound == 12 then
 					Baffle = BaffleBox.new(self,300,GetHitBall[14],"box4",.2,.5)
@@ -678,9 +699,11 @@ function P2_GAMESTART:setRoundRules()
 				if debugRound then
 					Baffle = BaffleBox.new(self,220,200,"box",.5,1)
 					Baffle = BaffleBox.new(self,380,250,"box2",.5,1)
+					self:addChild(RulesSecond)
 				else
 					Baffle = BaffleBox.new(self,220,GetHitBall[11]+50,"box",.5,1)
 					Baffle = BaffleBox.new(self,380,GetHitBall[12],"box2",.5,1)
+					self:addChild(RulesSecond)
 				end
 				setBox = false
 			end)

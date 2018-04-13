@@ -224,7 +224,6 @@ function P1_GAMESTART:init()
 				resetBall()
 			end
 			SpeedX , SpeedY = ball_body:getLinearVelocity()
-			print(SpeedY)
 			if tostring(SpeedY) == "-4.7710671054872e-021" then
 				resetBall()
 			end
@@ -253,6 +252,17 @@ function P1_GAMESTART:init()
 			end
 		until not GetP2Score
 	end)
+	
+	Ten = 0
+	
+	BallCountTimer = Timer.new(1000)
+	BallCountTimer:addEventListener(Event.TIMER,function()
+		Ten = Ten + 1
+		if Ten == 10 then
+			resetBall()
+		end
+	end)
+	
 
 -------------------------------------------------------------------------
 
@@ -353,7 +363,8 @@ function P1_GAMESTART:init()
 		CountGround = 1 
 		BoxScore = 0		
 		-------------------------
-		
+		BallCountTimer:stop()
+		Ten = 0
 	end
 ----------- 畫面佈局：
 	-- create background
@@ -474,6 +485,13 @@ function P1_GAMESTART:init()
 	self:addChildAt(self.band_l, 5)
 	self:addChildAt(self.slingshot_l, 6)
 	
+	
+	RulesFirst = FirstRules.new()
+	RulesSecond = SecondRules.new()
+	RulesThird = ThirdRules.new()
+	
+	self:addChild(RulesFirst)
+	
 	self:addEventListener(Event.ENTER_FRAME, self.onEnterFrame, self)
 	
 	ball:addEventListener(Event.MOUSE_DOWN, onMouseClickDown, self)
@@ -579,6 +597,7 @@ function onMouseClickUp(self, event)
 		self.band_r:clear()
 		
 		BallisAwake_Timer:start()
+		BallCountTimer:start()
 		
 		event:stopPropagation()
 	end
@@ -640,6 +659,7 @@ function P1_GAMESTART:setRoundRules()
 		if Round == "P1" or debugRound then
 			if CountRound == 11 then
 				Baffle = BaffleBox.new(self,280,RandomSet[3],"box3",.2,.5)
+				self:addChild(RulesThird)
 			end
 			if CountRound == 12 then
 				Baffle = BaffleBox.new(self,300,RandomSet[4],"box4",.2,.5)
@@ -663,6 +683,7 @@ function P1_GAMESTART:setRoundRules()
 				Baffle = BaffleBox.new(self,220,RandomSet[1]+50,"box",.5,1)
 				Baffle = BaffleBox.new(self,380,RandomSet[2],"box2",.5,1)
 				setBox = false
+				self:addChild(RulesSecond)
 			end)
 		end
 	end

@@ -5,7 +5,7 @@
 Button = Core.class(Sprite)
 local font = TTFont.new("font/kaiu.ttf", 20,true)
 --local font = TTFont.new("tahoma.ttf", 30,true)
-local textColorUp = 0xF3E96B;
+local textColorUp = 0xe81717;
 local textColorDown = 0xfcfcfc;
 
 --'value' is the text shown on button

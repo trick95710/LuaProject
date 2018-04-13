@@ -12,17 +12,27 @@ function Rule:init()
 		speed = 5,
 		unfocusedAlpha = 0.75,
 		easing = nil,
-		allowDrag = true,
+		allowDrag = false,
 		dragOffset = 10
 	})
 	
 	self:addChild(slider)
 
 	--create 10 boxes
-	for i = 1, 10 do
-		local box = Bitmap.new(Texture.new("picture/crate.png"))
-		slider:add(box)
-	end
+	
+	
+	slider:add(startrule)
+	slider:add(Redboardrule)
+	slider:add(Grayboardrule)
+	slider:add(RoundBoxrule)
+	slider:add(groundrule)
+	slider:add(ballrule)
+	slider:add(JudgeBall)
+	slider:add(Round6)
+	slider:add(bafflerule)
+	
+	local Final = 9
+	
 
 	--just to show as example
 	--of modifying all elements
@@ -35,7 +45,7 @@ function Rule:init()
 	
 	
 	local Ipconnectbutton = Button.new(imgUp, imgDown, "連線")
-	Ipconnectbutton:setPosition(center_height,center_width+70)
+	Ipconnectbutton:setPosition(center_height,center_width+120)
 	Ipconnectbutton:addEventListener("click", function()
 		sceneManager:changeScene("Ipconnect", 1, SceneManager.fade, easing.linear) 
 	end)
@@ -56,7 +66,8 @@ function Rule:init()
 		function()	
 			beforeItem = getItem
 			getItem = slider:nextItem()
-			if beforeItem == 9 and getItem == 10 then
+			print(getItem)
+			if beforeItem == Final-1 and getItem == Final then
 				self:addChild(Ipconnectbutton)
 			end
 		end
@@ -71,7 +82,8 @@ function Rule:init()
 		function()	
 			beforeItem = getItem
 			getItem = slider:prevItem()
-			if beforeItem == 10 and getItem == 9 then
+			print(getItem)
+			if beforeItem == Final and getItem == Final-1 then
 				self:removeChild(Ipconnectbutton)
 			end
 		end

@@ -42,11 +42,11 @@ function GameEnd:init()
 		end
 	elseif User == "P2" then
 		if score_P1 > score_P2 then
-			ShowWinText = "You Win!!"
+			ShowWinText = "You Lose!!"
 			ShowScoreText = "得分：" .. score_P2
 			ShowPlayerScore = "對手：" .. score_P1
 		elseif score_P1 < score_P2 then
-			ShowWinText = "You Lose!!"
+			ShowWinText = "You Win!!"
 			ShowScoreText = "得分：" .. score_P2
 			ShowPlayerScore = "對手：" .. score_P1
 		elseif score_P1 == score_P2 then

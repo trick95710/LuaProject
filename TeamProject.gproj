@@ -1,5 +1,5 @@
 <project>
- <properties html5_fbinstant="0" iosDevice="0" ios_bundle="com.yourdomain." windowHeight="0" disableSplash="0" build_number="1" mouseTouchOrder="0" mouseToTouch="1" windowWidth="0" encryptCode="0" scaleMode="0" encryptAssets="0" osx_category="5" html5_pack="0" version="1.0" win_org="GiderosMobile" osx_installerId="" html5_fbload="100" splashScaleMode="0" vsync="0" touchToMouse="1" android_template="0" osx_signingId="" exportMode="0" logicalHeight="480" packageName="com.yourdomain.yourapp" version_code="1" app_icon="" orientation="0" autorotation="0" osx_domain="giderosmobile.com" fps="60" architecture="0" splash_v_image="" html5_host="" tv_icon="" app_name="" osx_org="GiderosMobile" html5_mem="256" winrt_org="GiderosMobile" logicalWidth="320" retinaDisplay="0" win_domain="giderosmobile.com" osx_bundle="com.yourdomain." winrt_package="com.yourdomain.yourapp" backgroundColor="#ffffff" splash_h_image="">
+ <properties encryptCode="0" iosDevice="0" splash_h_image="" html5_mem="256" version="1.0" mouseTouchOrder="0" win_domain="giderosmobile.com" win_org="GiderosMobile" ios_bundle="com.yourdomain." vsync="0" fps="60" winrt_package="com.yourdomain.yourapp" html5_pack="0" logicalWidth="320" retinaDisplay="0" html5_host="" touchToMouse="1" windowWidth="0" splashScaleMode="0" exportMode="0" windowHeight="0" app_name="" architecture="0" html5_fbload="100" osx_category="5" osx_installerId="" version_code="1" logicalHeight="480" encryptAssets="0" orientation="0" osx_bundle="com.yourdomain." html5_fbinstant="0" android_template="0" splash_v_image="" osx_org="GiderosMobile" build_number="1" app_icon="" scaleMode="0" backgroundColor="#ffffff" packageName="com.yourdomain.yourapp" disableSplash="0" osx_domain="giderosmobile.com" tv_icon="" winrt_org="GiderosMobile" mouseToTouch="1" autorotation="0" osx_signingId="">
   <imageScales/>
   <plugins>
    <plugin name="Ads" enabled="0"/>
@@ -74,6 +74,15 @@
  </folder>
  <folder name="picture">
   <folder name="Rules">
+   <file source="picture/Rules/startrule.png"/>
+   <file source="picture/Rules/JudgeBall.png"/>
+   <file source="picture/Rules/Round6.png"/>
+   <file source="picture/Rules/Grayboardrule.png"/>
+   <file source="picture/Rules/RoundBoxrule.png"/>
+   <file source="picture/Rules/Redboardrule.png"/>
+   <file source="picture/Rules/groundrule.png"/>
+   <file source="picture/Rules/ballrule.png"/>
+   <file source="picture/Rules/bafflerule.png"/>
    <file source="picture/Rules/right-up.png"/>
    <file source="picture/Rules/right-down.png"/>
    <file source="picture/Rules/RulePicture.jpg"/>
