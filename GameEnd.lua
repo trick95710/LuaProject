@@ -23,37 +23,58 @@ function GameEnd:init()
 		User = "P1"
 	end
 	
+	P1_score = tonumber(score_P1)
+	P2_score = tonumber(score_P2)
+	
+	
 	local ShowWinText =""
 	local ShowScoreText = ""
 	local ShowPlayerScore =""
 	if User == "P1" then
-		if score_P1 > score_P2 then
+		if P1_score > P2_score then
 			ShowWinText = "You Win!!"
 			ShowScoreText = "得分：" .. score_P1
 			ShowPlayerScore = "對手：" .. score_P2
-		elseif score_P1 < score_P2 then
+		elseif P1_score < P2_score then
 			ShowWinText = "You Lose!!"
 			ShowScoreText = "得分：" .. score_P1
 			ShowPlayerScore = "對手：" .. score_P2
-		elseif score_P1 == score_P2 then
+		elseif P1_score == P2_score then
 			ShowWinText = "Deuces !!"
 			ShowScoreText = "得分：" .. score_P1
 			ShowPlayerScore = "對手：" .. score_P2
 		end
 	elseif User == "P2" then
-		if score_P1 > score_P2 then
+		if P1_score > P2_score then
 			ShowWinText = "You Lose!!"
 			ShowScoreText = "得分：" .. score_P2
 			ShowPlayerScore = "對手：" .. score_P1
-		elseif score_P1 < score_P2 then
+		elseif P1_score < P2_score then
 			ShowWinText = "You Win!!"
 			ShowScoreText = "得分：" .. score_P2
 			ShowPlayerScore = "對手：" .. score_P1
-		elseif score_P1 == score_P2 then
+		elseif P1_score == P2_score then
 			ShowWinText = "Deuces !!"
 			ShowScoreText = "得分：" .. score_P2
 			ShowPlayerScore = "對手：" .. score_P1
 		end
+	end
+	
+	--try to read information
+	local NewScore = getData("NewScore")
+-- if no information, create it
+	if NewScore then
+		NewData = {"P1 :",score_P1 , "P2 :",score_P2,os.date("%Y-%m-%d %H:%M:%S")}
+		
+		for i = 1 , #NewScore do
+			table.insert(NewData,NewScore[i])
+		end
+		
+		--save data
+		saveData("NewScore", NewData)
+	else
+		NewData = {"P1 :",score_P1 , "P2 :",score_P2,os.date("%Y-%m-%d %H:%M:%S")}
+		saveData("NewScore", NewData)
 	end
 	
 	local GameEndText = TextField.new(TTFont.new("font/W1.ttc", 100, true), "分數結算")
@@ -86,7 +107,7 @@ function GameEnd:init()
 	end)
 	self:addChild(Menubutton)
 	
-
+	
 
 -----------------------------------------------------------------------
 	self:addEventListener("enterBegin", self.onTransitionInBegin, self)

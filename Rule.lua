@@ -9,13 +9,13 @@ function Rule:init()
 	local bg = Bitmap.new(Texture.new("picture/Rules/RulePicture.jpg"))
 	self:addChildAt(bg,1)
 	
-	local slider = AceSlide.new({
+	slider = AceSlide.new({
 		orientation = "horizontal",
 		spacing = 100,
 		speed = 5,
 		unfocusedAlpha = 0.75,
 		easing = nil,
-		allowDrag = false,
+		allowDrag = true,
 		dragOffset = 10
 	})
 	
@@ -110,7 +110,7 @@ function Rule:init()
 				debugGOP2 = debugGOP2 +1
 				print(debugGOP2)
 				if debugGOP2 == 10 then
-					sceneManager:changeScene("P1_GAMESTART", 1, SceneManager.fade, easing.linear) 
+					sceneManager:changeScene("P2_GAMESTART", 1, SceneManager.fade, easing.linear) 
 				end
 			end
 		end
@@ -137,4 +137,5 @@ end
 
 function Rule:onTransitionOutEnd()
 	print("Rule - exit end")
+	self:removeChild(slider)
 end

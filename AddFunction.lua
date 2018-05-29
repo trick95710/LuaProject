@@ -26,4 +26,35 @@ function string:split(delimiter)
 	table.insert(result, self:sub(from))
 	return result
 end
+function saveData(key, value)
+	local contents = json.encode(value)
+    --create file
+    local file = io.open( "|D|"..key, "w" )
+    --save json string in file
+    file:write( contents )
+    --close file
+    io.close( file )
+end
 
+function getData(key)
+	local value
+	local file = io.open( "|D|"..key, "r" )
+    if file then
+        --read contents
+        local contents = file:read( "*a" )
+        --decode json
+        value = json.decode(contents)
+        --close file
+        io.close( file )
+    end
+	return value
+end
+function clearScore()
+	local NewScore = getData("NewScore")
+	if NewScore then
+		NewData = {}
+		
+		--save data
+		saveData("NewScore", NewData)
+	end
+end

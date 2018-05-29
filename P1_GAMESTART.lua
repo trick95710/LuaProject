@@ -827,6 +827,10 @@ end
 
 function P1_GAMESTART:onTransitionInBegin()
 	print("P1_GAMESTART - enter begin")
+	channel:stop()
+	music2 = Sound.new("sound/YouTube- Upbeat Ukulele.mp3")
+	channel2 = music2:play(0,true)
+	channel2:setVolume(channel:getVolume())
 end
 
 function P1_GAMESTART:onTransitionInEnd()
@@ -852,4 +856,10 @@ function P1_GAMESTART:onTransitionOutEnd()
 	ball:removeEventListener(Event.MOUSE_UP, onMouseClickUp, self)
 		
 	self.world:removeEventListener(Event.BEGIN_CONTACT, P1_onBeginContact)
+	
+	channel2:stop()
+	CH = channel:getVolume()
+	music = Sound.new("sound/YouTube- Whistling Down the Road.mp3")
+	channel = music:play(0,true)
+	channel:setVolume(CH)
 end

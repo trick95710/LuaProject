@@ -1,6 +1,7 @@
 require "Config"
 require "AddFunction"
 require "box2d"
+require "json"
 
 application:setScaleMode("letterbox")
 application:setOrientation(Stage.LANDSCAPE_LEFT)
@@ -19,8 +20,8 @@ sceneManager = SceneManager.new({
 	["start"] = start,
 	--Rule scene
 	["Rule"] = Rule,
-	--Rules scene
-	["Rules"] = Rules,
+	--score scene
+	["score"] = score,
 	--options scene
 	["options"] = options,
 	--Ipconnect scene

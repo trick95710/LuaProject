@@ -22,7 +22,7 @@ function BaffleBox:init(Player, x, y, name , ScaleX, ScaleY)
 	
 	local shape = b2.PolygonShape.new()
 	shape:setAsBox(sprite:getWidth()/2, sprite:getHeight()/2)
-	body:createFixture{shape = shape, density = 1, restitution = 0.2, friction = 0.3}
+	body:createFixture{shape = shape, density = 1, restitution = 0.8, friction = 0.3}
 
 	print(sprite:getHeight()/2)
 	

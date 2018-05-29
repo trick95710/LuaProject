@@ -4,7 +4,7 @@ function FirstRules:init()
 	
 	--create layer for menu buttons
 	local layer = Popup.new({easing = easing.outBack})
-	layer:setFillStyle(Shape.SOLID, 0xaf5f5f, .5)
+	layer:setFillStyle(Shape.SOLID, 0xaf5f5f, .9)
 	layer:setLineStyle(.3, 0x8dd1f4)
 	layer:setScale(0)
 	self:addChild(layer)

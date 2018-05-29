@@ -24,13 +24,13 @@ function start:init()
 	
 	
 	
-	local Rules = Button.new(imgUp, imgDown, "遊戲規則")
+	local score = Button.new(imgUp, imgDown, "歷史紀錄")
 	--endButton:setPosition(center_height,center_width+70)
-	Rules:addEventListener("click", function()
+	score:addEventListener("click", function()
 		-- it should be used on Android only.
-		sceneManager:changeScene("Rules", 1, SceneManager.fade, easing.linear) 
+		sceneManager:changeScene("score", 1, SceneManager.fade, easing.linear) 
 	end)
-	menu:addChild(Rules)
+	menu:addChild(score)
 	
 	local GameEndText = TextField.new(TTFont.new("font/Barrelhouse All Caps.ttf", 50, true), "Ball Shooter")
 	GameEndText:setTextColor(0xad0808)
@@ -60,6 +60,7 @@ function start:init()
 			end
 		end
 	)
+	
 	
 -- Get in or out to enter down of all the function
 	self:addEventListener("enterBegin", self.onTransitionInBegin, self)
